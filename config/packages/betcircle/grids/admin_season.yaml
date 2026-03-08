@@ -1,0 +1,72 @@
+sylius_grid:
+    grids:
+        app_admin_season:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\BetCircle\Season
+
+            sorting:
+                startDate: desc
+
+            fields:
+                name:
+                    type: string
+                    label: app.ui.name
+                    sortable: name
+
+                code:
+                    type: string
+                    label: app.ui.code
+                    sortable: code
+
+                status:
+                    type: string
+                    label: app.ui.status
+                    path: statusValue
+                    sortable: status
+
+                startDate:
+                    type: datetime
+                    label: app.ui.start_date
+                    sortable: startDate
+                    options:
+                        format: 'Y-m-d'
+
+                endDate:
+                    type: datetime
+                    label: app.ui.end_date
+                    sortable: endDate
+                    options:
+                        format: 'Y-m-d'
+
+                visible:
+                    type: twig
+                    label: app.ui.visible
+                    path: visible
+                    options:
+                        template: "@SyliusAdmin/shared/grid/field/boolean.html.twig"
+
+            filters:
+                name:
+                    type: string
+                    label: app.ui.name
+
+                code:
+                    type: string
+                    label: app.ui.code
+
+                status:
+                    type: string
+                    label: app.ui.status
+
+            actions:
+                main:
+                    create:
+                        type: create
+
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

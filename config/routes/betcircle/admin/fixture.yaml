@@ -1,0 +1,16 @@
+app_admin_fixture:
+    resource: |
+        alias: app.fixture
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_fixture
+        permission: true
+        vars:
+            all:
+                subheader: app.ui.fixtures
+            index:
+                icon: 'tabler:calendar-event'
+    type: sylius.resource
+    prefix: /admin

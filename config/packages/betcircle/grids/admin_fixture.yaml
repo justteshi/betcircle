@@ -1,0 +1,74 @@
+sylius_grid:
+    grids:
+        app_admin_fixture:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\BetCircle\Fixture
+
+            sorting:
+                kickoffAt: desc
+
+            fields:
+                gameWeekName:
+                    type: string
+                    label: app.ui.game_week
+                    path: gameWeek.name
+
+                homeTeamName:
+                    type: string
+                    label: app.ui.home_team
+                    path: homeTeam.name
+
+                awayTeamName:
+                    type: string
+                    label: app.ui.away_team
+                    path: awayTeam.name
+
+                kickoffAt:
+                    type: datetime
+                    label: app.ui.kickoff_at
+                    sortable: kickoffAt
+                    options:
+                        format: 'Y-m-d H:i'
+
+                status:
+                    type: string
+                    label: app.ui.status
+                    path: statusValue
+                    sortable: status
+
+                homeScore:
+                    type: string
+                    label: app.ui.home_score
+                    sortable: homeScore
+
+                awayScore:
+                    type: string
+                    label: app.ui.away_score
+                    sortable: awayScore
+
+                displayOrder:
+                    type: string
+                    label: app.ui.display_order
+                    sortable: displayOrder
+
+            filters:
+                kickoffAt:
+                    type: date
+                    label: app.ui.kickoff_at
+
+                status:
+                    type: string
+                    label: app.ui.status
+
+            actions:
+                main:
+                    create:
+                        type: create
+
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

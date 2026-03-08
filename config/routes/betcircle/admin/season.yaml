@@ -1,0 +1,16 @@
+app_admin_season:
+    resource: |
+        alias: app.season
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_season
+        permission: true
+        vars:
+            all:
+                subheader: app.ui.seasons
+            index:
+                icon: 'tabler:trophy'
+    type: sylius.resource
+    prefix: /admin

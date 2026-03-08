@@ -1,0 +1,35 @@
+app:
+    ui:
+        teams: Teams
+        team: Team
+        name: Name
+        short_name: Short name
+        slug: Slug
+        country: Country
+        league_name: League
+        active: Active
+        seasons: Seasons
+        season: Season
+        code: Code
+        status: Status
+        start_date: Start date
+        end_date: End date
+        visible: Visible
+        game_weeks: Game weeks
+        game_week: Game week
+        entry_cost_tokens: Entry cost tokens
+        first_fixture_starts_at: First fixture starts at
+        join_deadline: Join deadline
+        prediction_lock: Prediction lock
+        finalized: Finalized
+        leagues: Leagues
+        league: League
+        betcircle: BetCircle
+        fixtures: Fixtures
+        fixture: Fixture
+        home_team: Home team
+        away_team: Away team
+        kickoff_at: Kickoff at
+        home_score: Home score
+        away_score: Away score
+        display_order: Display order

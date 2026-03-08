@@ -1,0 +1,16 @@
+app_admin_game_week:
+    resource: |
+        alias: app.game_week
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_game_week
+        permission: true
+        vars:
+            all:
+                subheader: app.ui.game_weeks
+            index:
+                icon: 'tabler:calendar-week'
+    type: sylius.resource
+    prefix: /admin

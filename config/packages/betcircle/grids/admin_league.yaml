@@ -1,0 +1,53 @@
+sylius_grid:
+    grids:
+        app_admin_league:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\BetCircle\League
+
+            sorting:
+                name: asc
+
+            fields:
+                name:
+                    type: string
+                    label: app.ui.name
+                    sortable: name
+
+                slug:
+                    type: string
+                    label: app.ui.slug
+                    sortable: slug
+
+                country:
+                    type: string
+                    label: app.ui.country
+                    sortable: country
+
+                active:
+                    type: twig
+                    label: app.ui.active
+                    path: active
+                    options:
+                        template: "@SyliusAdmin/shared/grid/field/boolean.html.twig"
+
+            filters:
+                name:
+                    type: string
+                    label: app.ui.name
+
+                country:
+                    type: string
+                    label: app.ui.country
+
+            actions:
+                main:
+                    create:
+                        type: create
+
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

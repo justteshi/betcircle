@@ -1,0 +1,16 @@
+app_admin_league:
+    resource: |
+        alias: app.league
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_league
+        permission: true
+        vars:
+            all:
+                subheader: app.ui.leagues
+            index:
+                icon: 'tabler:trophy'
+    type: sylius.resource
+    prefix: /admin  

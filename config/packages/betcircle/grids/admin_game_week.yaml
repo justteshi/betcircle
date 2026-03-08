@@ -1,0 +1,87 @@
+sylius_grid:
+    grids:
+        app_admin_game_week:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\BetCircle\GameWeek
+
+            sorting:
+                firstFixtureStartsAt: desc
+
+            fields:
+                name:
+                    type: string
+                    label: app.ui.name
+                    sortable: name
+
+                season:
+                    type: string
+                    label: app.ui.season
+                    path: season.name
+
+                status:
+                    type: string
+                    label: app.ui.status
+                    path: statusValue
+                    sortable: status
+
+                entryCostTokens:
+                    type: string
+                    label: app.ui.entry_cost_tokens
+                    sortable: entryCostTokens
+
+                firstFixtureStartsAt:
+                    type: datetime
+                    label: app.ui.first_fixture_starts_at
+                    sortable: firstFixtureStartsAt
+                    options:
+                        format: 'Y-m-d H:i'
+
+                joinDeadlineAt:
+                    type: datetime
+                    label: app.ui.join_deadline
+                    sortable: joinDeadlineAt
+                    options:
+                        format: 'Y-m-d H:i'
+
+                predictionLockAt:
+                    type: datetime
+                    label: app.ui.prediction_lock
+                    sortable: predictionLockAt
+                    options:
+                        format: 'Y-m-d H:i'
+
+                visible:
+                    type: twig
+                    label: app.ui.visible
+                    path: visible
+                    options:
+                        template: "@SyliusAdmin/shared/grid/field/boolean.html.twig"
+
+                finalized:
+                    type: twig
+                    label: app.ui.finalized
+                    path: finalized
+                    options:
+                        template: "@SyliusAdmin/shared/grid/field/boolean.html.twig"
+
+            filters:
+                name:
+                    type: string
+                    label: app.ui.name
+
+                status:
+                    type: string
+                    label: app.ui.status
+
+            actions:
+                main:
+                    create:
+                        type: create
+
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

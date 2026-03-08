@@ -1,0 +1,5 @@
+betcircle_admin:
+    resource: 'betcircle/admin/*.yaml'
+
+betcircle_api:
+    resource: 'betcircle/api/*.yaml'

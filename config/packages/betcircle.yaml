@@ -1,0 +1,3 @@
+imports:
+    - { resource: 'betcircle/resources.yaml' }
+    - { resource: 'betcircle/grids/*.yaml' }

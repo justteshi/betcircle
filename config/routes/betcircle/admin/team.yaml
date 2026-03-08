@@ -1,0 +1,16 @@
+app_admin_team:
+    resource: |
+        alias: app.team
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_team
+        permission: true
+        vars:
+            all:
+                subheader: app.ui.teams
+            index:
+                icon: 'tabler:ball-football'
+    type: sylius.resource
+    prefix: /admin

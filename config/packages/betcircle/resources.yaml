@@ -1,0 +1,27 @@
+sylius_resource:
+    resources:
+        app.team:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\BetCircle\Team
+                repository: App\Repository\BetCircle\TeamRepository
+        app.season:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\BetCircle\Season
+                repository: App\Repository\BetCircle\SeasonRepository
+        app.game_week:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\BetCircle\GameWeek
+                repository: App\Repository\BetCircle\GameWeekRepository
+        app.league:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\BetCircle\League
+                repository: App\Repository\BetCircle\LeagueRepository
+        app.fixture:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\BetCircle\Fixture
+                repository: App\Repository\BetCircle\FixtureRepository
