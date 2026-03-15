@@ -8,7 +8,7 @@ use App\Entity\BetCircle\Wallet;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
 
-final class WalletManager
+final readonly class WalletManager
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
