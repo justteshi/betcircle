@@ -1,0 +1,228 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ week.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        {% set alreadyJoined = weekEntry is not null %}
+        {% set canJoin = isWeekVisible and isWeekOpen and not joinClosed and not alreadyJoined %}
+        {% set canPredict = isWeekVisible and isWeekOpen and alreadyJoined and not predictionLocked %}
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
+        <div class="mb-4 d-flex justify-content-between align-items-center">
+            <a href="{{ path('app_shop_gameweeks_index') }}" class="text-decoration-none">
+                &larr; Back to Game Weeks
+            </a>
+
+            <div>
+                {% if is_granted('ROLE_USER') %}
+                    {% if alreadyJoined %}
+                        <button class="btn btn-success" disabled>Joined</button>
+                    {% elseif canJoin %}
+                        <form method="post" action="{{ path('app_shop_gameweeks_join', { id: week.id }) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('join_gameweek_' ~ week.id) }}">
+                            <button class="btn btn-primary">Join Game Week</button>
+                        </form>
+                    {% elseif joinClosed %}
+                        <button class="btn btn-secondary" disabled>Closed</button>
+                    {% elseif not isWeekVisible %}
+                        <button class="btn btn-secondary" disabled>Hidden</button>
+                    {% elseif not isWeekOpen %}
+                        <button class="btn btn-secondary" disabled>Not Open</button>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ path('sylius_shop_login') }}" class="btn btn-outline-primary">
+                        Login to Join
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h1 class="h3 mb-3">{{ week.name }}</h1>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-muted small">Entry cost</div>
+                        <div class="fw-bold">{{ week.entryCostTokens }} TOKENS</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-muted small">Join deadline</div>
+                        <div class="fw-bold">{{ week.joinDeadlineAt ? week.joinDeadlineAt|date('Y-m-d H:i') : '—' }}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-muted small">Prediction lock</div>
+                        <div class="fw-bold">{{ week.predictionLockAt ? week.predictionLockAt|date('Y-m-d H:i') : '—' }}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-muted small">Status</div>
+                        <div class="fw-bold">{{ week.statusValue|replace({'_': ' '})|title }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if alreadyJoined %}
+            {% if predictionLocked %}
+                <div class="alert alert-secondary">
+                    Predictions are locked for this Game Week.
+                </div>
+            {% else %}
+                <div class="alert alert-success">
+                    You joined this Game Week. Submit your predictions below.
+                </div>
+            {% endif %}
+        {% elseif joinClosed %}
+            <div class="alert alert-secondary">
+                Joining for this Game Week is closed.
+            </div>
+        {% elseif not isWeekVisible %}
+            <div class="alert alert-secondary">
+                This Game Week is not visible.
+            </div>
+        {% elseif not isWeekOpen %}
+            <div class="alert alert-secondary">
+                This Game Week is not open.
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                You need to join this Game Week before submitting predictions.
+            </div>
+        {% endif %}
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h5 mb-0">Fixtures</h2>
+
+                    {% if alreadyJoined %}
+                        <span class="badge bg-light text-dark">
+                            {{ predictionsByFixtureId|length }} / {{ fixtures|length }} saved
+                        </span>
+                    {% endif %}
+                </div>
+
+                {% if fixtures is empty %}
+                    <p class="text-muted mb-0">No fixtures added to this Game Week yet.</p>
+                {% else %}
+                    {% if alreadyJoined %}
+                        <form method="post" action="{{ path('app_shop_gameweeks_predictions_submit', { id: week.id }) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('submit_predictions_' ~ week.id) }}">
+
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Fixture</th>
+                                        <th>Kickoff</th>
+                                        <th>Status</th>
+                                        <th style="width: 220px;">Your Prediction</th>
+                                        <th style="width: 140px;">Saved Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for fixture in fixtures %}
+                                        {% set prediction = predictionsByFixtureId[fixture.id] ?? null %}
+
+                                        <tr>
+                                            <td>{{ fixture.displayOrder }}</td>
+                                            <td>
+                                                <div class="fw-semibold">
+                                                    {{ fixture.homeTeam ? fixture.homeTeam.name : 'TBD' }}
+                                                    vs
+                                                    {{ fixture.awayTeam ? fixture.awayTeam.name : 'TBD' }}
+                                                </div>
+                                            </td>
+                                            <td>{{ fixture.kickoffAt ? fixture.kickoffAt|date('Y-m-d H:i') : '—' }}</td>
+                                            <td>{{ fixture.statusValue|replace({'_': ' '})|title }}</td>
+                                            <td>
+                                                <input type="hidden" name="predictions[{{ loop.index0 }}][fixtureId]" value="{{ fixture.id }}">
+
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <input
+                                                        type="number"
+                                                        min="0"
+                                                        class="form-control"
+                                                        name="predictions[{{ loop.index0 }}][predictedHomeScore]"
+                                                        value="{{ prediction ? prediction.predictedHomeScore : '' }}"
+                                                        {% if not canPredict %}disabled{% endif %}
+                                                    >
+
+                                                    <span>-</span>
+
+                                                    <input
+                                                        type="number"
+                                                        min="0"
+                                                        class="form-control"
+                                                        name="predictions[{{ loop.index0 }}][predictedAwayScore]"
+                                                        value="{{ prediction ? prediction.predictedAwayScore : '' }}"
+                                                        {% if not canPredict %}disabled{% endif %}
+                                                    >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {% if prediction %}
+                                                    <span class="badge bg-success">Saved</span>
+                                                    <div class="small text-muted mt-1">
+                                                        {{ prediction.predictedOutcomeValue|replace({'_': ' '})|title }}
+                                                    </div>
+                                                {% else %}
+                                                    <span class="badge bg-light text-dark">Not saved</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {% if canPredict %}
+                                <div class="mt-3 text-end">
+                                    <button type="submit" class="btn btn-primary">
+                                        Save Predictions
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </form>
+                    {% else %}
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fixture</th>
+                                    <th>Kickoff</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for fixture in fixtures %}
+                                    <tr>
+                                        <td>{{ fixture.displayOrder }}</td>
+                                        <td>
+                                            {{ fixture.homeTeam ? fixture.homeTeam.name : 'TBD' }}
+                                            vs
+                                            {{ fixture.awayTeam ? fixture.awayTeam.name : 'TBD' }}
+                                        </td>
+                                        <td>{{ fixture.kickoffAt ? fixture.kickoffAt|date('Y-m-d H:i') : '—' }}</td>
+                                        <td>{{ fixture.statusValue|replace({'_': ' '})|title }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
