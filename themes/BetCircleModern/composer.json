@@ -1,0 +1,15 @@
+{
+    "name": "betcircle/modern-football-theme",
+    "description": "Modern football-first storefront theme for BetCircle channels.",
+    "authors": [
+        {
+            "name": "justteshi"
+        }
+    ],
+    "extra": {
+        "sylius-theme": {
+            "title": "BetCircle Modern Football",
+            "description": "Clean matchday-focused theme with football styling, motion, and polished home and game week pages."
+        }
+    }
+}

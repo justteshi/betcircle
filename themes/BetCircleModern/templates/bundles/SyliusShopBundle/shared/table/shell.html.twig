@@ -1,0 +1,13 @@
+<div class="bc-ui-table {{ table_shell_class|default('') }}">
+    <div class="bc-ui-table__top">
+        {% block top %}{% endblock %}
+    </div>
+
+    <div class="table-responsive bc-table-wrap bc-ui-table__surface">
+        {% block table %}{% endblock %}
+    </div>
+
+    <div class="bc-ui-table__footer">
+        {% block footer %}{% endblock %}
+    </div>
+</div>

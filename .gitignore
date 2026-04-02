@@ -61,5 +61,7 @@ phpstan.neon
 /public/media/cache/
 ###< liip/imagine-bundle ###
 
+.DS_Store
+/public/_themes/
 
 .idea

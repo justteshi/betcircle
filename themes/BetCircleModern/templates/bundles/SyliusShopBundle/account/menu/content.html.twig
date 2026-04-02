@@ -1,0 +1,29 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% set current_path = app.request.pathInfo|default('') %}
+
+{% block root %}
+    <div class="bc-account-menu">
+        {{ block('list') }}
+    </div>
+{% endblock %}
+
+{% block list %}
+    <div class="bc-account-menu__list">
+        {% for item in item.children %}
+            {{ block('item') }}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block item %}
+    {% set item_path = item.uri ? (item.uri|split('?'))[0] : '' %}
+    {% set is_active = item_path is not empty and item_path != '#' and (current_path == item_path or (item_path != '/' and current_path starts with item_path ~ '/')) %}
+
+    <a class="bc-account-menu__item{% if is_active %} is-active{% endif %}" href="{{ item.uri }}"{% if is_active %} aria-current="page"{% endif %}>
+        {%- if item.labelAttributes.icon is defined %}
+            {{ ux_icon(item.labelAttributes.icon, {'class': 'icon'}) }}
+        {%- endif %}
+        {{ item.label|trans }}
+    </a>
+{% endblock %}

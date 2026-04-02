@@ -1,0 +1,14 @@
+<div class="bc-wallet-balance-card mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+            <div class="text-white-50 small">{{ 'app.ui.wallet_balance'|trans }}</div>
+            <div class="d-flex align-items-center gap-2 mt-2">
+                <img src="{{ asset('images/tokens/token_template_cropped.png') }}" alt="BetCircle" style="height:2rem;">
+                <div class="h3 mb-0 text-white">{{ wallet_balance() }}</div>
+                <span class="text-white-50 text-uppercase small">{{ 'app.ui.tokens'|trans }}</span>
+            </div>
+        </div>
+
+        <div class="text-white-50 small">{{ 'app.ui.betcircle_wallet'|trans }}</div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'app.ui.homepage_meta_title'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="container bc-homepage">
+        <section class="bc-homepage__hero" data-animate>
+            <div class="bc-homepage__pitch"></div>
+
+            <div class="row align-items-center g-4 position-relative">
+                <div class="col-lg-7">
+                    <span class="bc-homepage__eyebrow">{{ 'app.ui.homepage_eyebrow'|trans }}</span>
+                    <h1 class="bc-homepage__title">{{ 'app.ui.homepage_hero_title_before'|trans }} <span>{{ 'app.ui.homepage_hero_title_highlight'|trans }}</span> {{ 'app.ui.homepage_hero_title_after'|trans }}</h1>
+                    <p class="bc-homepage__lead">
+                        {{ 'app.ui.homepage_hero_lead'|trans }}
+                    </p>
+
+                    <div class="bc-hero-actions">
+                        <a href="{{ path('app_shop_gameweeks_index') }}" class="btn bc-btn-accent">{{ 'app.ui.homepage_explore_game_weeks'|trans }}</a>
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{ path('sylius_shop_account_dashboard') }}" class="btn bc-btn-glass">{{ 'app.ui.homepage_open_my_account'|trans }}</a>
+                        {% else %}
+                            <a href="{{ path('sylius_shop_register') }}" class="btn bc-btn-glass">{{ 'app.ui.homepage_create_account'|trans }}</a>
+                        {% endif %}
+                    </div>
+
+                    <div class="bc-hero-stats">
+                        <div class="bc-stat-card" data-animate>
+                            <div class="bc-stat-value">{{ 'app.ui.homepage_stat_1_value'|trans }}</div>
+                            <div class="bc-stat-label">{{ 'app.ui.homepage_stat_1_label'|trans }}</div>
+                        </div>
+                        <div class="bc-stat-card" data-animate>
+                            <div class="bc-stat-value">{{ 'app.ui.homepage_stat_2_value'|trans }}</div>
+                            <div class="bc-stat-label">{{ 'app.ui.homepage_stat_2_label'|trans }}</div>
+                        </div>
+                        <div class="bc-stat-card" data-animate>
+                            <div class="bc-stat-value">{{ 'app.ui.homepage_stat_3_value'|trans }}</div>
+                            <div class="bc-stat-label">{{ 'app.ui.homepage_stat_3_label'|trans }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="bc-surface-panel" data-animate>
+                        <div class="bc-mini-card">
+                            <div class="bc-mini-card__pill">{{ 'app.ui.homepage_panel_pill'|trans }}</div>
+                            <h2 class="bc-panel-heading">{{ 'app.ui.homepage_panel_title'|trans }}</h2>
+                            <p>
+                                {{ 'app.ui.homepage_panel_text'|trans }}
+                            </p>
+                        </div>
+
+                        <div class="row g-3 mt-1">
+                            <div class="col-6">
+                                <div class="bc-mini-card">
+                                    <div class="bc-kicker">{{ 'app.ui.homepage_mini_1_kicker'|trans }}</div>
+                                    <strong>{{ 'app.ui.homepage_mini_1_title'|trans }}</strong>
+                                    <p class="mb-0 mt-2">{{ 'app.ui.homepage_mini_1_text'|trans }}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bc-mini-card">
+                                    <div class="bc-kicker">{{ 'app.ui.homepage_mini_2_kicker'|trans }}</div>
+                                    <strong>{{ 'app.ui.homepage_mini_2_title'|trans }}</strong>
+                                    <p class="mb-0 mt-2">{{ 'app.ui.homepage_mini_2_text'|trans }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bc-mini-card">
+                                    <div class="bc-kicker">{{ 'app.ui.homepage_mini_3_kicker'|trans }}</div>
+                                    <strong>{{ 'app.ui.homepage_mini_3_title'|trans }}</strong>
+                                    <p class="mb-0 mt-2">{{ 'app.ui.homepage_mini_3_text'|trans }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bc-section">
+            <div data-animate>
+                <h2 class="bc-section-title">{{ 'app.ui.homepage_section_1_title'|trans }}</h2>
+                <p class="bc-section-subtitle">
+                    {{ 'app.ui.homepage_section_1_subtitle'|trans }}
+                </p>
+            </div>
+
+            <div class="bc-feature-grid">
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">01</div>
+                    <h3>{{ 'app.ui.homepage_feature_1_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.homepage_feature_1_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">02</div>
+                    <h3>{{ 'app.ui.homepage_feature_2_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.homepage_feature_2_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">03</div>
+                    <h3>{{ 'app.ui.homepage_feature_3_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.homepage_feature_3_text'|trans }}</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bc-section">
+            <div class="bc-spotlight" data-animate>
+                <div>
+                    <span class="bc-pill">{{ 'app.ui.homepage_spotlight_pill'|trans }}</span>
+                    <h2 class="bc-section-title mt-3">{{ 'app.ui.homepage_spotlight_title'|trans }}</h2>
+                    <p class="bc-section-subtitle mb-0">
+                        {{ 'app.ui.homepage_spotlight_subtitle'|trans }}
+                    </p>
+                </div>
+
+                <div class="bc-spotlight__card">
+                    <div class="bc-kicker">{{ 'app.ui.homepage_spotlight_card_kicker'|trans }}</div>
+                    <h3 class="text-white mt-2">{{ 'app.ui.homepage_spotlight_card_title'|trans }}</h3>
+                    <p class="bc-spotlight__text mb-0">
+                        {{ 'app.ui.homepage_spotlight_card_text'|trans }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="bc-timeline-grid">
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.homepage_step_1_index'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.homepage_step_1_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.homepage_step_1_text'|trans }}</p>
+                </article>
+
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.homepage_step_2_index'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.homepage_step_2_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.homepage_step_2_text'|trans }}</p>
+                </article>
+
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.homepage_step_3_index'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.homepage_step_3_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.homepage_step_3_text'|trans }}</p>
+                </article>
+            </div>
+        </section>
+    </div>
+{% endblock %}

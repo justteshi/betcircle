@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="bc-auth-shell">
+        <div class="row g-0 align-items-stretch">
+            <div class="col-lg-5">
+                <div class="bc-auth-aside">
+                    <span class="bc-pill">{{ 'app.ui.register_pill'|trans }}</span>
+                    <h1 class="text-white mt-3 mb-3">{{ 'app.ui.register_hero_title'|trans }}</h1>
+                    <p class="mb-0 text-white-50">
+                        {{ 'app.ui.register_hero_text'|trans }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="bc-auth-panel">
+                    {% hook 'content' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'app.ui.game_weeks_page_title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="bc-page-header" data-animate>
+            <div class="bc-page-header__card">
+                <span class="bc-pill">{{ 'app.ui.game_weeks'|trans }}</span>
+                <h1 class="text-white mt-3 mb-3">{{ 'app.ui.gameweeks_index_title'|trans }}</h1>
+                <p class="bc-page-header__lead mb-0">
+                    {{ 'app.ui.gameweeks_index_lead'|trans }}
+                </p>
+                <div class="bc-page-header__meta">
+                    <span>{{ 'app.ui.gameweeks_index_rounds_available'|trans({'%count%': weeks|length}) }}</span>
+                    <span>{{ 'app.ui.gameweeks_index_deadline_access'|trans }}</span>
+                    <span>{{ 'app.ui.gameweeks_index_token_entry'|trans }}</span>
+                </div>
+            </div>
+        </section>
+
+        {% include 'shop/shared/flashes.html.twig' %}
+
+        <div class="bc-gameweek-grid">
+            {% for week in weeks %}
+                {% set joinClosed = week.joinDeadlineAt and week.joinDeadlineAt < date() %}
+                {% set alreadyJoined = week.id in joinedWeekIds %}
+
+                <article class="bc-gameweek-card" data-animate>
+                    <div class="bc-gameweek-card__top">
+                        <div>
+                            <div class="bc-kicker">{{ 'app.ui.game_week'|trans }}</div>
+                            <h2 class="h4 mt-2 mb-0">
+                                <a href="{{ path('app_shop_gameweeks_show', { id: week.id }) }}" class="text-decoration-none">
+                                    {{ week.name }}
+                                </a>
+                            </h2>
+                        </div>
+
+                        <div>
+                            {% if alreadyJoined %}
+                                <span class="badge bg-success">{{ 'app.ui.joined'|trans }}</span>
+                            {% elseif joinClosed %}
+                                <span class="badge bg-secondary">{{ 'app.ui.closed'|trans }}</span>
+                            {% else %}
+                                <span class="badge bg-light">{{ 'app.ui.open'|trans }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="bc-gameweek-card__metrics">
+                        <div class="bc-metric">
+                            <span class="d-block small">{{ 'app.ui.entry_cost'|trans }}</span>
+                            <strong>{{ 'app.ui.tokens_amount'|trans({'%amount%': week.entryCostTokens}) }}</strong>
+                        </div>
+                        <div class="bc-metric">
+                            <span class="d-block small">{{ 'app.ui.weekly_pool'|trans }}</span>
+                            <strong>{{ 'app.ui.tokens_amount'|trans({'%amount%': week.weeklyPoolTokens}) }}</strong>
+                        </div>
+                        <div class="bc-metric">
+                            <span class="d-block small">{{ 'app.ui.season_pool'|trans }}</span>
+                            <strong>{{ 'app.ui.tokens_amount'|trans({'%amount%': week.seasonalPoolContributionTokens}) }}</strong>
+                        </div>
+                        <div class="bc-metric">
+                            <span class="d-block small">{{ 'app.ui.join_deadline_label'|trans }}</span>
+                            <strong>{{ week.joinDeadlineAt ? week.joinDeadlineAt|date('M d · H:i') : '—' }}</strong>
+                        </div>
+                    </div>
+
+                    <p class="bc-card-note mb-4">
+                        {{ 'app.ui.gameweeks_index_card_note'|trans }}
+                    </p>
+
+                    <div class="mt-auto">
+                        <a href="{{ path('app_shop_gameweeks_show', { id: week.id }) }}" class="btn btn-outline-dark w-100">
+                            {{ 'app.ui.view_game_week'|trans }}
+                        </a>
+                    </div>
+                </article>
+            {% else %}
+                <div class="bc-empty-state">
+                    <h2 class="h4 mb-2">{{ 'app.ui.no_game_weeks_available'|trans }}</h2>
+                    <p class="mb-0">{{ 'app.ui.no_game_weeks_available_text'|trans }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

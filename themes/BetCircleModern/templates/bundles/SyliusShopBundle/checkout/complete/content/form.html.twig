@@ -1,0 +1,37 @@
+{% set form = hookable_metadata.context.form %}
+{% set order = hookable_metadata.context.order %}
+
+{% form_theme form '@SyliusShop/form/theme.html.twig' %}
+
+{{ form_start(form, {'action': path('sylius_shop_checkout_complete'), 'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_errors(form) }}
+<input type="hidden" name="_method" value="PUT" />
+
+<h1 class="h5 mb-4">{{ 'sylius.ui.summary_of_your_order'|trans }}</h1>
+
+<div class="card border-0 bg-body-tertiary mb-3">
+    <div class="card-body d-flex flex-column gap-1">
+        <div class="row">
+            <div class="col-12 col-sm-4">
+                {{ 'sylius.ui.currency'|trans }}
+            </div>
+            <div class="col" {{ sylius_test_html_attribute('order-currency-code') }}>
+                {{ order.currencyCode }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-4">
+                {{ 'sylius.ui.locale'|trans }}
+            </div>
+            <div class="col d-flex gap-2 align-items-center" {{ sylius_test_html_attribute('order-locale-name') }}>
+                {{ sylius.localeCode|sylius_locale_name }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% hook 'form' %}
+
+{{ form_row(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}

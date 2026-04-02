@@ -1,0 +1,5 @@
+{% if sylius_is_shipping_required(hookable_metadata.context.order) %}
+    <div class="mb-5">
+        {% hook 'shipments' %}
+    </div>
+{% endif %}

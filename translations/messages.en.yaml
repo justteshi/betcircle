@@ -33,3 +33,231 @@ app:
         home_score: Home score
         away_score: Away score
         display_order: Display order
+        how_to_play: How To Play
+        how_to_play_eyebrow: Quick guide · football predictions · tokens
+        how_to_play_hero_title_before: How BetCircle
+        how_to_play_hero_title_highlight: works
+        how_to_play_hero_title_after: in plain language.
+        how_to_play_hero_lead: Join a game week, spend tokens to enter, submit your score predictions before the lock time, and track how your picks perform as the fixtures finish.
+        how_to_play_short_version: The short version
+        how_to_play_panel_title: Pick a week. Join it. Predict the scores.
+        how_to_play_panel_text: The product is built to keep that flow clear, fast, and easy to follow even if it is your first time using the platform.
+        how_to_play_flow_title: The flow step by step
+        how_to_play_flow_subtitle: Everything you need to know before you place your first entry.
+        how_to_play_step_1_title: Create your account
+        how_to_play_step_1_text: Register or sign in so your entries, wallet balance, and predictions are tied to your profile.
+        how_to_play_step_2_title: Top up tokens
+        how_to_play_step_2_text: Buy token packs and keep your wallet funded so you can enter the game weeks you want to play.
+        how_to_play_step_3_title: Choose a game week
+        how_to_play_step_3_text: Open an active game week and check the entry fee, deadline, number of fixtures, and the prize pool attached to that round.
+        how_to_play_step_4_title: Join before the deadline
+        how_to_play_step_4_text: Spend the required tokens to secure your place before the join window closes.
+        how_to_play_step_5_title: Predict every score
+        how_to_play_step_5_text: Enter the home and away score you expect for each fixture, then save your predictions before the lock time.
+        how_to_play_step_6_title: Track your results
+        how_to_play_step_6_text: Come back after kickoff to review your picks, see standings, understand prize outcomes, and prepare for the next round.
+        how_to_play_prizes_title: How pool prizes work
+        how_to_play_prizes_subtitle: The platform shows both weekly and seasonal prize information so you can understand the reward structure before you join.
+        how_to_play_prize_1_title: Each week can have its own pool
+        how_to_play_prize_1_text: Before you enter, review the weekly pool, the seasonal contribution, and the token cost of joining that game week.
+        how_to_play_prize_index_1: Prize 01
+        how_to_play_prize_2_title: Seasonal prizes build over time
+        how_to_play_prize_2_text: Part of a game week can feed a season-long prize structure, which means performance across multiple rounds can matter, not just one week in isolation.
+        how_to_play_prize_index_2: Prize 02
+        how_to_play_prize_3_title: Results drive the payout outcome
+        how_to_play_prize_3_text: When fixtures finish and standings are calculated, the prize distribution is based on how your predictions performed against the rest of the field.
+        how_to_play_prize_index_3: Prize 03
+        how_to_play_prize_4_title: Prize value is tracked in tokens
+        how_to_play_prize_4_text: Winning outcomes are credited back through the wallet model, so your balance reflects the prize tokens earned from a successful week.
+        how_to_play_prize_index_4: Prize 04
+        how_to_play_helpful_notes: Helpful notes
+        how_to_play_notes_title: What matters most when you play.
+        how_to_play_notes_subtitle: These are the details that usually answer the first questions a user has.
+        how_to_play_keep_in_mind: Keep in mind
+        how_to_play_spotlight_title: Deadlines matter more than anything else.
+        how_to_play_spotlight_text: If a week is locked, you can still review it, but you should not expect to join or change predictions after the lock window has passed.
+        how_to_play_card_entry_kicker: Entry
+        how_to_play_card_entry_title: Tokens are your entry method
+        how_to_play_card_entry_text: You use wallet tokens to enter the selected week. No separate payment flow is needed once your wallet is funded.
+        how_to_play_card_predictions_kicker: Predictions
+        how_to_play_card_predictions_title: Save before lock
+        how_to_play_card_predictions_text: Your predictions only count if they are submitted before the prediction lock for that game week.
+        how_to_play_card_account_kicker: Account
+        how_to_play_card_account_title: Use the account area
+        how_to_play_card_account_text: Your wallet, order history, and profile settings all live under My Account.
+        how_to_play_card_game_flow_kicker: Game flow
+        how_to_play_card_game_flow_title: One week at a time
+        how_to_play_card_game_flow_text: Each game week has its own fixtures, timing, and entry requirements, so always review the current round first.
+        how_to_play_card_prizes_kicker: Prizes
+        how_to_play_card_prizes_title: Check the pool before joining
+        how_to_play_card_prizes_text: The weekly and seasonal pool details help you understand what you are playing for before you commit tokens.
+        how_to_play_card_seasonal_kicker: Seasonal
+        how_to_play_card_seasonal_title: Some rewards are bigger-picture prizes
+        how_to_play_card_seasonal_text: Seasonal prizes are meant to reward stronger performance across a longer stretch, so they complement the week-by-week pool rather than replace it.
+        how_to_play_card_withdrawals_kicker: Withdrawals
+        how_to_play_card_withdrawals_title: Token balance can be part of payout flow
+        how_to_play_card_withdrawals_text: If withdrawal or payout conversion is enabled on the platform, the wallet balance is the place to review what has been credited and what can move into a cash-out process.
+        game_weeks_page_title: Game Weeks
+        gameweeks_index_title: Pick your round. Lock in before kickoff.
+        gameweeks_index_lead: Browse every active football challenge, compare the token economics, and jump into the weeks that fit your strategy.
+        gameweeks_index_rounds_available: '%count% rounds available'
+        gameweeks_index_deadline_access: Deadline-aware access
+        gameweeks_index_token_entry: Token entry model
+        joined: Joined
+        closed: Closed
+        open: Open
+        entry_cost: Entry cost
+        weekly_pool: Weekly pool
+        season_pool: Season pool
+        join_deadline_label: Join deadline
+        tokens_amount: '%amount% TOKENS'
+        gameweeks_index_card_note: Review the fixtures, check the lock window, and enter the week when it fits your matchday plan.
+        view_game_week: View Game Week
+        no_game_weeks_available: No game weeks available yet.
+        no_game_weeks_available_text: Once football rounds are published, they will appear here with deadline and pool details.
+        back_to_game_weeks: Back to Game Weeks
+        back_to_game_week: Back to Game Week
+        gameweeks_show_lead: Manage your entry, watch the lock windows, and submit score predictions fixture by fixture.
+        weekly_leaderboard: Weekly leaderboard
+        weekly_leaderboard_lead: Review the final standings for this round, see who finished on top, and how the prize tokens were split.
+        weekly_leaderboard_not_finalized: This game week has not been finalized yet, so the leaderboard is not locked.
+        weekly_leaderboard_table_meta: Rank, points, prize tokens, and winner status for every player in this round.
+        no_leaderboard_available: No leaderboard available yet.
+        no_leaderboard_available_text: Finalize the game week first so the weekly standings can be generated.
+        view_leaderboard: View leaderboard
+        rank: Rank
+        player: Player
+        points: Points
+        prize_tokens: Prize tokens
+        winner_badge: Winner badge
+        winner: Winner
+        winners: Winners
+        total_prize_tokens: Total prize tokens
+        entries_count: '%count% entries'
+        entries_count_label: Entries
+        finalization_status: Finalization
+        pending: Pending
+        rankings_live_title: Final standings
+        anonymous_player: Anonymous player
+        no: 'No'
+        entry_tokens_inline: 'Entry %amount% TOKENS'
+        join_inline: 'Join %date%'
+        lock_inline: 'Lock %date%'
+        join_game_week: Join Game Week
+        hidden: Hidden
+        not_open: Not Open
+        login_to_join: Login to Join
+        predictions_locked_for_game_week: Predictions are locked for this Game Week.
+        joined_game_week_submit_predictions: You joined this Game Week. Submit your predictions below.
+        joining_game_week_closed: Joining for this Game Week is closed.
+        game_week_not_visible: This Game Week is not visible.
+        game_week_not_open: This Game Week is not open.
+        join_before_submitting_predictions: You need to join this Game Week before submitting predictions.
+        kickoff: Kickoff
+        your_prediction: Your Prediction
+        saved_status: Saved Status
+        fixtures_meta: Review the schedule and lock in scorelines before prediction close.
+        saved_count: '%saved% / %total% saved'
+        no_fixtures_added: No fixtures added yet.
+        no_fixtures_added_text: This round will become actionable once fixtures are assigned to the game week.
+        vs: vs
+        tbd: TBD
+        saved: Saved
+        not_saved: Not saved
+        save_predictions: Save Predictions
+        wallet: Wallet
+        transactions: Transactions
+        wallet_transactions_meta: Track credits, debits, and token activity.
+        wallet_balance: Wallet balance
+        tokens: tokens
+        betcircle_wallet: BetCircle Wallet
+        no_wallet_transactions: No wallet transactions yet.
+        no_wallet_transactions_text: New token activity will appear here once you start using the platform.
+        date: Date
+        type: Type
+        direction: Direction
+        amount: Amount
+        description: Description
+        footer_title: Football predictions with a cleaner, sharper matchday feel.
+        footer_text: A premium storefront direction for weekly football competition, token entry, and faster prediction workflows.
+        navigate: Navigate
+        home: Home
+        homepage_meta_title: BetCircle | Football Predictions Rebuilt
+        homepage_eyebrow: Football project context · game weeks · tokens
+        homepage_hero_title_before: Predict the
+        homepage_hero_title_highlight: big matches
+        homepage_hero_title_after: in a cleaner way.
+        homepage_hero_lead: BetCircle turns each game week into a premium football challenge with token-based entry, fast prediction flows, and a sharper matchday atmosphere.
+        homepage_explore_game_weeks: Explore game weeks
+        homepage_open_my_account: Open my account
+        homepage_create_account: Create account
+        homepage_stat_1_value: Weekly
+        homepage_stat_1_label: Prediction rounds built around fixture deadlines and pool visibility.
+        homepage_stat_2_value: Tokens
+        homepage_stat_2_label: Simple entry mechanics designed around your BetCircle wallet.
+        homepage_stat_3_value: Clean UI
+        homepage_stat_3_label: Less clutter, better hierarchy, and faster decisions before kickoff.
+        homepage_panel_pill: Matchday control
+        homepage_panel_title: Built for football rhythm
+        homepage_panel_text: Join the right week, track the lock window, and submit predictions without digging through crowded screens.
+        homepage_mini_1_kicker: Experience
+        homepage_mini_1_title: Modern glass UI
+        homepage_mini_1_text: Focused cards, stronger contrast, and responsive layouts.
+        homepage_mini_2_kicker: Flow
+        homepage_mini_2_title: Fast actions
+        homepage_mini_2_text: Direct access to current game weeks and account tools.
+        homepage_mini_3_kicker: Football-first
+        homepage_mini_3_title: Context that matches the project
+        homepage_mini_3_text: Everything from the color system to the pitch-inspired motion is tuned for a football prediction product.
+        homepage_section_1_title: A homepage that feels like matchday, not a generic shop.
+        homepage_section_1_subtitle: The new direction keeps the storefront clean while giving the football project a stronger identity through motion, contrast, and clearer conversion points.
+        homepage_feature_1_title: Sharper hierarchy
+        homepage_feature_1_text: Primary actions are obvious, supporting details stay readable, and important game week states stand out immediately.
+        homepage_feature_2_title: Modern motion
+        homepage_feature_2_text: Scroll reveals and subtle sticky-header behavior add polish without slowing down the experience.
+        homepage_feature_3_title: Better mobile UX
+        homepage_feature_3_text: The layout collapses cleanly, keeps CTAs visible, and avoids cramped card stacks on smaller screens.
+        homepage_spotlight_pill: How it plays
+        homepage_spotlight_title: From signup to saved predictions in three quick steps.
+        homepage_spotlight_subtitle: The new homepage guides users straight into the football flow instead of making them decode the platform first.
+        homepage_spotlight_card_kicker: Why this theme works
+        homepage_spotlight_card_title: The design system now matches the product model.
+        homepage_spotlight_card_text: Tokens, fixtures, deadlines, and weekly competition are all surfaced with clearer visual priority and more confident styling.
+        homepage_step_1_index: Step 01
+        homepage_step_1_title: Create or access your account
+        homepage_step_1_text: Get into the platform quickly and keep your wallet, entries, and saved predictions connected.
+        homepage_step_2_index: Step 02
+        homepage_step_2_title: Join an active game week
+        homepage_step_2_text: Review pools, entry cost, and deadlines before committing to that round.
+        homepage_step_3_index: Step 03
+        homepage_step_3_title: Submit predictions before lock
+        homepage_step_3_text: Use the improved fixture table and score inputs to move faster before kickoff.
+        account: Account
+        my_account: My Account
+        login: Login
+        register: Register
+        project_focus: Project Focus
+        project_focus_text: Weekly game weeks, deadline-aware joins, and a football-first presentation instead of a generic ecommerce homepage.
+        buy_more_here: Buy more here
+        profile: Profile
+        logout: Logout
+        primary_navigation: Primary
+        betcircle_home: BetCircle home
+        cart_button: Cart button
+        toggle_navigation: Toggle navigation
+        browse: Browse
+        breadcrumbs: Breadcrumbs
+        login_welcome_back: Welcome back
+        login_hero_title: Sign in and get back to your football flow.
+        login_hero_text: Check your wallet, enter the right game week, and update predictions before the lock window closes.
+        login_card_text: Access your profile, wallet, and active prediction rounds.
+        forgot_password_question: Forgot password?
+        register_pill: Join BetCircle
+        register_hero_title: Create your account for cleaner matchday predictions.
+        register_hero_text: Set up your profile, enter football rounds, and manage tokens and predictions from one place.
+        forgotten_password_pill: Recovery
+        forgotten_password_hero_title: Reset access without losing your rhythm.
+        forgotten_password_hero_text: Recover your account and return to active game weeks, wallet tools, and prediction management.
+        reset_password_pill: Security
+        reset_password_hero_title: Choose a new password and continue.
+        reset_password_hero_text: Update your credentials and get back to your account, entries, and storefront activity.

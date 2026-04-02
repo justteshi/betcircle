@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace App\Service\BetCircle\Scoring;
 
 use App\Entity\BetCircle\Fixture;
-use App\Repository\BetCircle\PredictionRepository;
+use App\Entity\BetCircle\Prediction;
 use Doctrine\ORM\EntityManagerInterface;
 
 final readonly class PredictionScoringService
 {
     public function __construct(
-        private PredictionRepository       $predictionRepository,
-        private PredictionOutcomeResolver  $predictionOutcomeResolver,
+        private PredictionOutcomeResolver $predictionOutcomeResolver,
         private PredictionPointsCalculator $predictionPointsCalculator,
-        private EntityManagerInterface     $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -31,7 +30,12 @@ final readonly class PredictionScoringService
             throw new \LogicException('Fixture result is incomplete.');
         }
 
-        $predictions = $this->predictionRepository->findByFixture($fixture);
+        /** @var Prediction[] $predictions */
+        $predictions = $this->entityManager
+            ->getRepository(Prediction::class)
+            ->findBy([
+                'fixture' => $fixture,
+            ]);
 
         foreach ($predictions as $prediction) {
             $predictedOutcome = $this->predictionOutcomeResolver->resolve(

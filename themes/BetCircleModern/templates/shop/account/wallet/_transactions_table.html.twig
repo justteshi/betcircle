@@ -1,0 +1,38 @@
+{% if transactions is empty %}
+    <div class="bc-empty-state">
+        <h3 class="h5 mb-2">{{ 'app.ui.no_wallet_transactions'|trans }}</h3>
+        <p class="mb-0">{{ 'app.ui.no_wallet_transactions_text'|trans }}</p>
+    </div>
+{% else %}
+    {% embed '@SyliusShop/shared/table/shell.html.twig' with { table_shell_class: 'bc-wallet-transactions-table' } %}
+        {% block table %}
+            <table class="table align-middle mb-0">
+                <thead>
+                <tr>
+                    <th>{{ 'app.ui.date'|trans }}</th>
+                    <th>{{ 'app.ui.type'|trans }}</th>
+                    <th>{{ 'app.ui.direction'|trans }}</th>
+                    <th>{{ 'app.ui.amount'|trans }}</th>
+                    <th>{{ 'app.ui.description'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.createdAt|date('Y-m-d H:i') }}</td>
+                        <td>{{ transaction.typeValue|replace({'_': ' '})|title }}</td>
+                        <td>
+                            <span class="bc-wallet-direction bc-wallet-direction--{{ transaction.directionValue }}">
+                                {{ ux_icon(transaction.directionValue == 'credit' ? 'tabler:plus' : 'tabler:minus') }}
+                                {{ transaction.directionValue|title }}
+                            </span>
+                        </td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.description ?: '—' }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+    {% endembed %}
+{% endif %}

@@ -1,0 +1,49 @@
+{% set resources = hookable_metadata.context.resources %}
+{% set data = resources.data %}
+{% set definition = resources.definition %}
+{% set gridCode = definition.code|default('') %}
+{% set isAccountOrderGrid = gridCode == 'sylius_shop_account_order' %}
+
+{% if data|length > 0 %}
+    {% embed '@SyliusShop/shared/table/shell.html.twig' with { table_shell_class: 'bc-grid-table' } %}
+        {% block top %}
+            {% import '@SyliusShop/shared/macro/pagination.html.twig' as pagination %}
+            {% if definition.actionGroups.bulk is defined and definition.getEnabledActions('bulk')|length > 0 %}
+                <div class="sylius-grid-nav__bulk">
+                    {% for action in definition.getEnabledActions('bulk')|sylius_sort_by('position') %}
+                        {{ sylius_grid_render_bulk_action(grid, action, null) }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if not isAccountOrderGrid and definition.limits|length > 1 and data|length > min(definition.limits) %}
+                <div class="ms-auto">
+                    {{ pagination.number_of_results_selector(data, definition.limits) }}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block table %}
+            {% import '@SyliusShop/shared/macro/grid/table.html.twig' as table %}
+            <table class="table align-middle mb-0" {{ sylius_test_html_attribute('grid-table') }}>
+                <thead>
+                    <tr>
+                        {{ table.headers(resources, definition, app.request.attributes) }}
+                    </tr>
+                </thead>
+                <tbody {{ sylius_test_html_attribute('grid-table-body') }}>
+                    {% for row in data %}
+                        {{ table.row(resources, definition, row) }}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+
+        {% block footer %}
+            {% import '@SyliusShop/shared/macro/pagination.html.twig' as pagination %}
+            <div class="ms-auto">
+                {{ pagination.simple(data) }}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endif %}

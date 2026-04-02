@@ -1,0 +1,15 @@
+{% set resources = hookable_metadata.context.resources %}
+{% set definition = resources.definition %}
+{% set gridCode = definition.code|default('') %}
+
+{% if resources.data|length == 0 %}
+    {% if gridCode == 'sylius_shop_account_order' %}
+        <div class="bc-empty-state">
+            <h3 class="h5 mb-2">{{ 'sylius.ui.no_results_to_display'|trans }}</h3>
+            <p class="mb-0">{{ 'sylius.ui.browse_your_orders_from_the_past'|trans }}</p>
+        </div>
+    {% else %}
+        {% import '@SyliusShop/shared/messages.html.twig' as messages %}
+        {{ messages.info('sylius.ui.no_results_to_display') }}
+    {% endif %}
+{% endif %}

@@ -39,7 +39,7 @@ class Fixture implements ResourceInterface
     #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $kickoffAt;
 
-    #[ORM\Column(enumType: FixtureStatus::class, length: 20)]
+    #[ORM\Column(length: 20, enumType: FixtureStatus::class)]
     private FixtureStatus $status = FixtureStatus::SCHEDULED;
 
     #[ORM\Column(nullable: true)]

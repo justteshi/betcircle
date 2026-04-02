@@ -1,0 +1,67 @@
+<div class="bc-header-wrap">
+    <div class="container">
+        <div class="bc-header">
+            <div class="bc-header-inner">
+                {% set currentRoute = app.request.attributes.get('_route') %}
+                {% set isGameweekRoute = currentRoute starts with 'app_shop_gameweeks' %}
+                {% set isHowToPlayRoute = currentRoute == 'app_shop_how_to_play' %}
+                {% set isAccountRoute = currentRoute starts with 'sylius_shop_account' or currentRoute starts with 'app_shop_account' or currentRoute starts with 'sylius_shop_login' or currentRoute starts with 'sylius_shop_register' or currentRoute starts with 'sylius_shop_forgotten' or currentRoute starts with 'sylius_shop_reset_password' %}
+                {% set currentLocale = app.request.locale %}
+
+                <div class="bc-header-side bc-header-side--left">
+                    <nav class="bc-nav" aria-label="{{ 'app.ui.primary_navigation'|trans }}">
+                        <a href="{{ path('sylius_shop_homepage') }}" class="bc-nav-link{% if currentRoute == 'sylius_shop_homepage' %} is-active{% endif %}">{{ 'app.ui.home'|trans }}</a>
+                        <a href="{{ path('app_shop_gameweeks_index') }}" class="bc-nav-link{% if isGameweekRoute %} is-active{% endif %}">{{ 'app.ui.game_weeks'|trans }}</a>
+                        <a href="{{ path('app_shop_how_to_play') }}" class="bc-nav-link{% if isHowToPlayRoute %} is-active{% endif %}">{{ 'app.ui.how_to_play'|trans }}</a>
+                    </nav>
+                </div>
+
+                <div class="bc-header-center">
+                    <div class="bc-logo">
+                        <a href="{{ path('sylius_shop_homepage') }}" class="bc-logo-link" aria-label="{{ 'app.ui.betcircle_home'|trans }}">
+                            <img src="{{ asset('images/logo/betcircle_logo.png') }}" alt="BetCircle">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bc-header-side bc-header-side--right">
+                    <div class="bc-header-actions">
+                        {% if is_granted('ROLE_USER') %}
+                            {% set menuTaxon = sylius.channel.menuTaxon %}
+                            {% set buyMorePath = menuTaxon ? path('sylius_shop_product_index', {
+                                slug: menuTaxon.slug,
+                                _locale: currentLocale
+                            }) : path('sylius_shop_homepage', { _locale: currentLocale }) %}
+                            <a href="{{ buyMorePath }}" class="bc-balance-hint">{{ 'app.ui.buy_more_here'|trans }}</a>
+                            <a href="{{ path('app_shop_account_wallet') }}" class="bc-balance-chip{% if currentRoute == 'app_shop_account_wallet' %} is-active{% endif %}">
+                                <img src="{{ asset('images/tokens/token_template_cropped.png') }}" alt="" aria-hidden="true">
+                                <span>{{ wallet_balance() }}</span>
+                            </a>
+                            {{ component('sylius_shop:cart:widget', { template: '@SyliusShop/shared/components/header/cart.html.twig' }) }}
+                            <div class="dropdown">
+                                <button class="bc-header-chip bc-header-chip--accent dropdown-toggle{% if isAccountRoute %} is-active{% endif %}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ 'app.ui.my_account'|trans }}
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end bc-header-dropdown">
+                                    <a href="{{ path('sylius_shop_account_dashboard') }}" class="dropdown-item bc-header-dropdown__item">{{ 'app.ui.profile'|trans }}</a>
+                                    <a href="{{ path('app_shop_account_wallet') }}" class="dropdown-item bc-header-dropdown__item">{{ 'app.ui.wallet'|trans }}</a>
+                                    <a href="{{ path('sylius_shop_logout') }}" class="dropdown-item bc-header-dropdown__item">{{ 'app.ui.logout'|trans }}</a>
+                                </div>
+                            </div>
+                            {{ component('sylius_shop:common:locale_switcher', {
+                                template: '@SyliusShop/shared/layout/base/header/content/locale_switcher.html.twig'
+                            }) }}
+                        {% else %}
+                            <a href="{{ path('sylius_shop_login') }}" class="bc-header-chip{% if currentRoute == 'sylius_shop_login' %} is-active{% endif %}">{{ 'app.ui.login'|trans }}</a>
+                            <a href="{{ path('sylius_shop_register') }}" class="bc-header-chip bc-header-chip--accent{% if currentRoute == 'sylius_shop_register' %} is-active{% endif %}">{{ 'app.ui.register'|trans }}</a>
+                            {{ component('sylius_shop:common:locale_switcher', {
+                                template: '@SyliusShop/shared/layout/base/header/content/locale_switcher.html.twig'
+                            }) }}
+                        {% endif %}
+                        {% hook 'taxon_hamburger' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

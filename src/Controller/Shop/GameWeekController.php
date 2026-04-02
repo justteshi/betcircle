@@ -6,6 +6,7 @@ namespace App\Controller\Shop;
 
 use App\Entity\BetCircle\GameWeek;
 use App\Entity\BetCircle\Prediction;
+use App\Entity\BetCircle\StandingSnapshot;
 use App\Entity\BetCircle\WeekEntry;
 use App\Enum\BetCircle\GameWeekStatus;
 use App\Service\BetCircle\GameWeek\JoinWeekService;
@@ -108,6 +109,20 @@ final class GameWeekController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/leaderboard', name: 'app_shop_gameweeks_leaderboard', methods: ['GET'])]
+    public function leaderboard(GameWeek $week, EntityManagerInterface $entityManager): Response
+    {
+        /** @var array<int, StandingSnapshot> $leaderboard */
+        $leaderboard = $entityManager
+            ->getRepository(StandingSnapshot::class)
+            ->findWeeklyByGameWeek($week);
+
+        return $this->render('shop/gameweeks/leaderboard.html.twig', [
+            'week' => $week,
+            'leaderboard' => $leaderboard,
+        ]);
+    }
+
     #[Route('/{id}/join', name: 'app_shop_gameweeks_join', methods: ['POST'])]
     #[IsGranted('ROLE_USER')]
     public function join(
@@ -136,6 +151,7 @@ final class GameWeekController extends AbstractController
 
         return $this->redirectToRoute('app_shop_gameweeks_show', [
             'id' => $week->getId(),
+            '_locale' => $request->getLocale(),
         ]);
     }
 
@@ -170,6 +186,7 @@ final class GameWeekController extends AbstractController
 
         return $this->redirectToRoute('app_shop_gameweeks_show', [
             'id' => $week->getId(),
+            '_locale' => $request->getLocale(),
         ]);
     }
 }

@@ -1,0 +1,240 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ week.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% set alreadyJoined = weekEntry is not null %}
+        {% set canJoin = isWeekVisible and isWeekOpen and not joinClosed and not alreadyJoined %}
+        {% set canPredict = isWeekVisible and isWeekOpen and alreadyJoined and not predictionLocked %}
+
+        <section class="bc-page-header" data-animate>
+            <div class="bc-page-header__card">
+                <a href="{{ path('app_shop_gameweeks_index') }}" class="bc-back-link">&larr; {{ 'app.ui.back_to_game_weeks'|trans }}</a>
+                <div class="d-flex flex-column flex-lg-row justify-content-between gap-4">
+                    <div>
+                        <span class="bc-pill">{{ week.statusValue|replace({'_': ' '})|title }}</span>
+                        <h1 class="text-white mt-3 mb-3">{{ week.name }}</h1>
+                        <p class="bc-page-header__lead mb-0">
+                            {{ 'app.ui.gameweeks_show_lead'|trans }}
+                        </p>
+                        <div class="bc-page-header__meta">
+                            <span>{{ 'app.ui.entry_tokens_inline'|trans({'%amount%': week.entryCostTokens}) }}</span>
+                            <span>{{ 'app.ui.join_inline'|trans({'%date%': week.joinDeadlineAt ? week.joinDeadlineAt|date('M d · H:i') : '—'}) }}</span>
+                            <span>{{ 'app.ui.lock_inline'|trans({'%date%': week.predictionLockAt ? week.predictionLockAt|date('M d · H:i') : '—'}) }}</span>
+                        </div>
+                    </div>
+
+                    <div class="bc-page-header__actions align-self-start">
+                        {% if is_granted('ROLE_USER') %}
+                            {% if alreadyJoined %}
+                                <button class="btn btn-success" disabled>{{ 'app.ui.joined'|trans }}</button>
+                            {% elseif canJoin %}
+                                <form method="post" action="{{ path('app_shop_gameweeks_join', { id: week.id }) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('join_gameweek_' ~ week.id) }}">
+                                    <button class="btn btn-primary">{{ 'app.ui.join_game_week'|trans }}</button>
+                                </form>
+                            {% elseif joinClosed %}
+                                <button class="btn btn-secondary" disabled>{{ 'app.ui.closed'|trans }}</button>
+                            {% elseif not isWeekVisible %}
+                                <button class="btn btn-secondary" disabled>{{ 'app.ui.hidden'|trans }}</button>
+                            {% elseif not isWeekOpen %}
+                                <button class="btn btn-secondary" disabled>{{ 'app.ui.not_open'|trans }}</button>
+                            {% endif %}
+                        {% else %}
+                            <a href="{{ path('sylius_shop_login') }}" class="btn btn-outline-primary">
+                                {{ 'app.ui.login_to_join'|trans }}
+                            </a>
+                        {% endif %}
+
+                        {% if week.finalized %}
+                            <a href="{{ path('app_shop_gameweeks_leaderboard', { id: week.id }) }}" class="btn bc-btn-glass">
+                                {{ 'app.ui.view_leaderboard'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include 'shop/shared/flashes.html.twig' %}
+
+        <div class="bc-summary-grid mb-4">
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.entry_cost'|trans }}</span>
+                <strong>{{ 'app.ui.tokens_amount'|trans({'%amount%': week.entryCostTokens}) }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.join_deadline_label'|trans }}</span>
+                <strong>{{ week.joinDeadlineAt ? week.joinDeadlineAt|date('Y-m-d H:i') : '—' }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.prediction_lock'|trans }}</span>
+                <strong>{{ week.predictionLockAt ? week.predictionLockAt|date('Y-m-d H:i') : '—' }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.status'|trans }}</span>
+                <strong>{{ week.statusValue|replace({'_': ' '})|title }}</strong>
+            </div>
+        </div>
+
+        {% if alreadyJoined %}
+            {% if predictionLocked %}
+                <div class="alert alert-secondary">
+                    {{ 'app.ui.predictions_locked_for_game_week'|trans }}
+                </div>
+            {% else %}
+                <div class="alert alert-success">
+                    {{ 'app.ui.joined_game_week_submit_predictions'|trans }}
+                </div>
+            {% endif %}
+        {% elseif joinClosed %}
+            <div class="alert alert-secondary">
+                {{ 'app.ui.joining_game_week_closed'|trans }}
+            </div>
+        {% elseif not isWeekVisible %}
+            <div class="alert alert-secondary">
+                {{ 'app.ui.game_week_not_visible'|trans }}
+            </div>
+        {% elseif not isWeekOpen %}
+            <div class="alert alert-secondary">
+                {{ 'app.ui.game_week_not_open'|trans }}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                {{ 'app.ui.join_before_submitting_predictions'|trans }}
+            </div>
+        {% endif %}
+
+        <section class="bc-fixture-shell" data-animate>
+            <div class="bc-fixture-head">
+                <div>
+                    <h2 class="h4 mb-1">{{ 'app.ui.fixtures'|trans }}</h2>
+                    <div class="bc-fixture-meta">{{ 'app.ui.fixtures_meta'|trans }}</div>
+                </div>
+
+                {% if alreadyJoined %}
+                    <span class="badge bg-light text-dark">
+                        {{ 'app.ui.saved_count'|trans({'%saved%': predictionsByFixtureId|length, '%total%': fixtures|length}) }}
+                    </span>
+                {% endif %}
+            </div>
+
+            {% if fixtures is empty %}
+                <div class="bc-empty-state">
+                    <h3 class="h5 mb-2">{{ 'app.ui.no_fixtures_added'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.no_fixtures_added_text'|trans }}</p>
+                </div>
+            {% else %}
+                {% if alreadyJoined %}
+                    <form method="post" action="{{ path('app_shop_gameweeks_predictions_submit', { id: week.id }) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('submit_predictions_' ~ week.id) }}">
+
+                        <div class="table-responsive bc-table-wrap">
+                            <table class="table align-middle mb-0">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{ 'app.ui.fixture'|trans }}</th>
+                                    <th>{{ 'app.ui.kickoff'|trans }}</th>
+                                    <th>{{ 'app.ui.status'|trans }}</th>
+                                    <th style="width: 220px;">{{ 'app.ui.your_prediction'|trans }}</th>
+                                    <th style="width: 140px;">{{ 'app.ui.saved_status'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for fixture in fixtures %}
+                                    {% set prediction = predictionsByFixtureId[fixture.id] ?? null %}
+
+                                    <tr>
+                                        <td>{{ fixture.displayOrder }}</td>
+                                        <td>
+                                            <div class="fw-semibold">
+                                                {{ fixture.homeTeam ? fixture.homeTeam.name : 'app.ui.tbd'|trans }}
+                                                {{ 'app.ui.vs'|trans }}
+                                                {{ fixture.awayTeam ? fixture.awayTeam.name : 'app.ui.tbd'|trans }}
+                                            </div>
+                                        </td>
+                                        <td>{{ fixture.kickoffAt ? fixture.kickoffAt|date('Y-m-d H:i') : '—' }}</td>
+                                        <td>{{ fixture.statusValue|replace({'_': ' '})|title }}</td>
+                                        <td>
+                                            <input type="hidden" name="predictions[{{ loop.index0 }}][fixtureId]" value="{{ fixture.id }}">
+
+                                            <div class="d-flex align-items-center gap-2">
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    class="form-control"
+                                                    name="predictions[{{ loop.index0 }}][predictedHomeScore]"
+                                                    value="{{ prediction ? prediction.predictedHomeScore : '' }}"
+                                                    {% if not canPredict %}disabled{% endif %}
+                                                >
+
+                                                <span>-</span>
+
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    class="form-control"
+                                                    name="predictions[{{ loop.index0 }}][predictedAwayScore]"
+                                                    value="{{ prediction ? prediction.predictedAwayScore : '' }}"
+                                                    {% if not canPredict %}disabled{% endif %}
+                                                >
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {% if prediction %}
+                                                <span class="badge bg-success">{{ 'app.ui.saved'|trans }}</span>
+                                                <div class="small text-muted mt-1">
+                                                    {{ prediction.predictedOutcomeValue|replace({'_': ' '})|title }}
+                                                </div>
+                                            {% else %}
+                                                <span class="badge bg-light text-dark">{{ 'app.ui.not_saved'|trans }}</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {% if canPredict %}
+                            <div class="mt-3 text-end">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ 'app.ui.save_predictions'|trans }}
+                                </button>
+                            </div>
+                        {% endif %}
+                    </form>
+                {% else %}
+                    <div class="table-responsive bc-table-wrap">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ 'app.ui.fixture'|trans }}</th>
+                                <th>{{ 'app.ui.kickoff'|trans }}</th>
+                                <th>{{ 'app.ui.status'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for fixture in fixtures %}
+                                <tr>
+                                    <td>{{ fixture.displayOrder }}</td>
+                                    <td>
+                                        {{ fixture.homeTeam ? fixture.homeTeam.name : 'app.ui.tbd'|trans }}
+                                        {{ 'app.ui.vs'|trans }}
+                                        {{ fixture.awayTeam ? fixture.awayTeam.name : 'app.ui.tbd'|trans }}
+                                    </td>
+                                    <td>{{ fixture.kickoffAt ? fixture.kickoffAt|date('Y-m-d H:i') : '—' }}</td>
+                                    <td>{{ fixture.statusValue|replace({'_': ' '})|title }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

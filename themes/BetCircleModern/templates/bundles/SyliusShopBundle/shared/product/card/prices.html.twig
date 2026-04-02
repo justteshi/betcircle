@@ -1,0 +1,26 @@
+{% set product = hookable_metadata.context.product %}
+{% set variant = hookable_metadata.context.variant ?? null %}
+{% set appliedPromotions = hookable_metadata.context.applied_promotions ?? [] %}
+{% set hasDiscount = hookable_metadata.context.has_discount ?? false %}
+{% set hasPromoSignals = hasDiscount or appliedPromotions|length > 0 %}
+
+{% if not product.enabledVariants.empty() and variant is not null %}
+    <div class="bc-product-card__prices{{ hasPromoSignals ? ' has-highlight' : ' is-plain' }}">
+        {% if appliedPromotions|length > 0 %}
+            <div class="bc-product-card__promotions">
+                {{ component('sylius_shop:catalog_promotions', {
+                    variant: variant,
+                    applied_promotions: appliedPromotions,
+                    withDescription: false
+                }) }}
+            </div>
+        {% endif %}
+
+        <div class="bc-product-card__price-line">
+            {{ component('sylius_shop:product:card:price', {
+                variant: variant,
+                template: '@SyliusShop/product/common/price.html.twig'
+            }) }}
+        </div>
+    </div>
+{% endif %}

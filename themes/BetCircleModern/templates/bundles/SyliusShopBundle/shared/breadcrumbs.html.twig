@@ -1,0 +1,15 @@
+{% macro breadcrumbs(items) %}
+    <nav aria-label="{{ 'app.ui.breadcrumbs'|trans }}">
+        <ol class="breadcrumb bc-breadcrumbs mb-0">
+            {% for item in items %}
+                <li class="breadcrumb-item fw-normal{{ item.active is defined and item.active ? ' active' }}">
+                    {% if item.active is defined and item.active %}
+                        <span>{{ item.label|raw }}</span>
+                    {% else %}
+                        <a href="{{ item.path }}">{{ item.label|raw }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    </nav>
+{% endmacro %}

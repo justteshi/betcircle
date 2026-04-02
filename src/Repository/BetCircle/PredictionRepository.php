@@ -10,9 +10,6 @@ use App\Entity\BetCircle\Prediction;
 use App\Entity\BetCircle\Season;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-/**
- * @extends EntityRepository<Prediction>
- */
 final class PredictionRepository extends EntityRepository
 {
     /**

@@ -1,0 +1,44 @@
+<div class="bc-footer">
+    <div class="container">
+        <div class="bc-footer__card">
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-5">
+                    <div class="bc-pill">{{ 'app.ui.betcircle'|trans }}</div>
+                    <h2 class="text-white mt-3 mb-3">{{ 'app.ui.footer_title'|trans }}</h2>
+                    <p class="mb-0 text-white-50">
+                        {{ 'app.ui.footer_text'|trans }}
+                    </p>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="text-uppercase small text-white-50 mb-3">{{ 'app.ui.navigate'|trans }}</div>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="{{ path('sylius_shop_homepage') }}">{{ 'app.ui.home'|trans }}</a>
+                        <a href="{{ path('app_shop_gameweeks_index') }}">{{ 'app.ui.game_weeks'|trans }}</a>
+                        <a href="{{ path('app_shop_how_to_play') }}">{{ 'app.ui.how_to_play'|trans }}</a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="text-uppercase small text-white-50 mb-3">{{ 'app.ui.account'|trans }}</div>
+                    <div class="d-flex flex-column gap-2">
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{ path('sylius_shop_account_dashboard') }}">{{ 'app.ui.my_account'|trans }}</a>
+                            <a href="{{ path('app_shop_account_wallet') }}">{{ 'app.ui.wallet'|trans }}</a>
+                        {% else %}
+                            <a href="{{ path('sylius_shop_login') }}">{{ 'app.ui.login'|trans }}</a>
+                            <a href="{{ path('sylius_shop_register') }}">{{ 'app.ui.register'|trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="text-uppercase small text-white-50 mb-3">{{ 'app.ui.project_focus'|trans }}</div>
+                    <p class="mb-0 text-white-50">
+                        {{ 'app.ui.project_focus_text'|trans }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

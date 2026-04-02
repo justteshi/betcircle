@@ -1,0 +1,8 @@
+{% if has_discount %}
+    <span class="bc-price bc-price--original" {{ sylius_test_html_attribute('product-original-price') }}>
+        <del>{{ original_price }}</del>
+    </span>
+{% endif %}
+<span class="bc-price bc-price--current{{ has_discount ? ' has-discount' : ' is-plain' }}" {{ sylius_test_html_attribute('product-price') }}>
+    {{ price }}
+</span>

@@ -1,0 +1,8 @@
+{% for type, classes in {
+    success: 'alert alert-success',
+    error: 'alert alert-danger'
+} %}
+    {% for message in app.flashes(type) %}
+        <div class="{{ classes }}">{{ message }}</div>
+    {% endfor %}
+{% endfor %}

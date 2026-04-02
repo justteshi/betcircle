@@ -279,3 +279,9 @@ sylius_twig_hooks:
         'sylius_shop.base#javascripts':
             app_javascripts:
                 template: 'shop/javascripts.html.twig'
+        'sylius_shop.shared.order.show.summary.table.header':
+            recurring:
+                enabled: false
+        'sylius_shop.shared.order.show.summary.table.body':
+            recurring:
+                enabled: false

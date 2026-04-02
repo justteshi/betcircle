@@ -1,0 +1,263 @@
+app:
+    ui:
+        teams: Отбори
+        team: Отбор
+        name: Име
+        short_name: Кратко име
+        slug: Слъг
+        country: Държава
+        league_name: Лига
+        active: Активен
+        seasons: Сезони
+        season: Сезон
+        code: Код
+        status: Статус
+        start_date: Начална дата
+        end_date: Крайна дата
+        visible: Видим
+        game_weeks: Игрови седмици
+        game_week: Игрова седмица
+        entry_cost_tokens: Цена за вход в токени
+        first_fixture_starts_at: Първият мач започва на
+        join_deadline: Краен срок за включване
+        prediction_lock: Заключване на прогнози
+        finalized: Финализиран
+        leagues: Лиги
+        league: Лига
+        betcircle: BetCircle
+        fixtures: Срещи
+        fixture: Среща
+        home_team: Домакин
+        away_team: Гост
+        kickoff_at: Начало
+        home_score: Голове домакин
+        away_score: Голове гост
+        display_order: Ред на показване
+        how_to_play: Как се играе
+        how_to_play_eyebrow: Кратко ръководство · футболни прогнози · токени
+        how_to_play_hero_title_before: Как
+        how_to_play_hero_title_highlight: работи
+        how_to_play_hero_title_after: BetCircle на ясен език.
+        how_to_play_hero_lead: Избери игрова седмица, използвай токени за участие, изпрати прогнозите си преди заключването и следи как се представят изборите ти след края на мачовете.
+        how_to_play_short_version: Накратко
+        how_to_play_panel_title: Избери седмица. Включи се. Прогнозирай резултатите.
+        how_to_play_panel_text: Платформата е изградена така, че този процес да е ясен, бърз и лесен дори ако използваш BetCircle за първи път.
+        how_to_play_flow_title: Как протича играта стъпка по стъпка
+        how_to_play_flow_subtitle: Всичко, което трябва да знаеш преди първото си участие.
+        how_to_play_step_1_title: Създай своя акаунт
+        how_to_play_step_1_text: Регистрирай се или влез, за да бъдат участията, портфейлът и прогнозите ти свързани с профила ти.
+        how_to_play_step_2_title: Зареди токени
+        how_to_play_step_2_text: Купи пакети с токени и поддържай портфейла си зареден, за да можеш да се включваш в желаните игрови седмици.
+        how_to_play_step_3_title: Избери игрова седмица
+        how_to_play_step_3_text: Отвори активна игрова седмица и провери входната цена, крайния срок, броя срещи и наградния фонд за този кръг.
+        how_to_play_step_4_title: Включи се преди крайния срок
+        how_to_play_step_4_text: Използвай нужните токени, за да си гарантираш участие преди затварянето на прозореца за включване.
+        how_to_play_step_5_title: Прогнозирай всички резултати
+        how_to_play_step_5_text: Въведи очаквания от теб резултат за домакин и гост във всяка среща и запази прогнозите си преди заключването.
+        how_to_play_step_6_title: Следи резултатите си
+        how_to_play_step_6_text: Върни се след началото на мачовете, за да видиш прогнозите си, класирането, наградите и да се подготвиш за следващия кръг.
+        how_to_play_prizes_title: Как работят наградните фондове
+        how_to_play_prizes_subtitle: Платформата показва както седмични, така и сезонни награди, за да разбираш структурата на наградите преди участие.
+        how_to_play_prize_1_title: Всяка седмица може да има собствен фонд
+        how_to_play_prize_1_text: Преди да се включиш, провери седмичния фонд, сезонния принос и цената в токени за тази игрова седмица.
+        how_to_play_prize_index_1: Награда 01
+        how_to_play_prize_2_title: Сезонните награди се натрупват с времето
+        how_to_play_prize_2_text: Част от всяка игрова седмица може да захранва сезонна наградна структура, което означава, че представянето в няколко кръга също има значение.
+        how_to_play_prize_index_2: Награда 02
+        how_to_play_prize_3_title: Резултатите определят наградите
+        how_to_play_prize_3_text: След като мачовете приключат и класирането бъде изчислено, наградите зависят от това колко добре са се представили прогнозите ти спрямо останалите участници.
+        how_to_play_prize_index_3: Награда 03
+        how_to_play_prize_4_title: Наградите се отчитат в токени
+        how_to_play_prize_4_text: Спечелените награди се кредитират през модела на портфейла, така че балансът ти отразява спечелените токени.
+        how_to_play_prize_index_4: Награда 04
+        how_to_play_helpful_notes: Полезни бележки
+        how_to_play_notes_title: Най-важното, което трябва да знаеш.
+        how_to_play_notes_subtitle: Това са детайлите, които обикновено отговарят на първите въпроси на потребителите.
+        how_to_play_keep_in_mind: Имай предвид
+        how_to_play_spotlight_title: Крайните срокове са най-важни.
+        how_to_play_spotlight_text: Ако седмицата е заключена, можеш да я разглеждаш, но не трябва да очакваш да се включиш или да променяш прогнозите си след изтичане на срока.
+        how_to_play_card_entry_kicker: Участие
+        how_to_play_card_entry_title: Токените са начинът за участие
+        how_to_play_card_entry_text: Използваш токени от портфейла си, за да се включиш в избраната седмица. Не е нужен отделен платежен процес, ако портфейлът ти е зареден.
+        how_to_play_card_predictions_kicker: Прогнози
+        how_to_play_card_predictions_title: Запази преди заключване
+        how_to_play_card_predictions_text: Прогнозите ти се зачитат само ако са изпратени преди заключването на прогнозите за съответната игрова седмица.
+        how_to_play_card_account_kicker: Акаунт
+        how_to_play_card_account_title: Използвай секцията на акаунта
+        how_to_play_card_account_text: Портфейлът, историята на поръчките и настройките на профила ти са в Моят акаунт.
+        how_to_play_card_game_flow_kicker: Игрови поток
+        how_to_play_card_game_flow_title: Една седмица наведнъж
+        how_to_play_card_game_flow_text: Всяка игрова седмица има свои срещи, време и изисквания, затова винаги преглеждай текущия кръг първо.
+        how_to_play_card_prizes_kicker: Награди
+        how_to_play_card_prizes_title: Провери фонда преди участие
+        how_to_play_card_prizes_text: Детайлите за седмичния и сезонния фонд ти помагат да разбереш за какво играеш, преди да използваш токени.
+        how_to_play_card_seasonal_kicker: Сезонни
+        how_to_play_card_seasonal_title: Някои награди са дългосрочни
+        how_to_play_card_seasonal_text: Сезонните награди отличават по-силното представяне в по-дълъг период и допълват седмичния фонд, а не го заменят.
+        how_to_play_card_withdrawals_kicker: Тегления
+        how_to_play_card_withdrawals_title: Балансът от токени може да участва в изплащане
+        how_to_play_card_withdrawals_text: Ако теглене или конвертиране към изплащане е активирано в платформата, портфейлът е мястото, където да видиш какво е начислено и какво може да премине към cash-out процес.
+        game_weeks_page_title: Игрови седмици
+        gameweeks_index_title: Избери своя кръг. Включи се преди началото.
+        gameweeks_index_lead: Разгледай всички активни футболни предизвикателства, сравни икономиката на токените и се включи в седмиците, които отговарят на стратегията ти.
+        gameweeks_index_rounds_available: '%count% налични кръга'
+        gameweeks_index_deadline_access: Достъп според крайния срок
+        gameweeks_index_token_entry: Модел за участие с токени
+        joined: Включен
+        closed: Затворено
+        open: Отворено
+        entry_cost: Цена за участие
+        weekly_pool: Седмичен фонд
+        season_pool: Сезонен фонд
+        join_deadline_label: Краен срок за включване
+        tokens_amount: '%amount% ТОКЕНА'
+        gameweeks_index_card_note: Прегледай срещите, провери времето за заключване и се включи в седмицата, когато съвпада с плана ти за мачовия ден.
+        view_game_week: Виж игровата седмица
+        no_game_weeks_available: Все още няма налични игрови седмици.
+        no_game_weeks_available_text: Когато футболните кръгове бъдат публикувани, ще се появят тук с крайни срокове и детайли за фондовете.
+        back_to_game_weeks: Назад към игровите седмици
+        back_to_game_week: Назад към игровата седмица
+        gameweeks_show_lead: Управлявай участието си, следи сроковете за заключване и подавай прогнози за всяка среща поотделно.
+        weekly_leaderboard: Седмично класиране
+        weekly_leaderboard_lead: Прегледай финалното класиране за този кръг, виж кой е завършил на върха и как са разпределени наградните токени.
+        weekly_leaderboard_not_finalized: Тази игрова седмица все още не е финализирана, затова класирането не е заключено.
+        weekly_leaderboard_table_meta: Ранг, точки, наградни токени и статус на победител за всеки играч в този кръг.
+        no_leaderboard_available: Все още няма налично класиране.
+        no_leaderboard_available_text: Първо финализирай игровата седмица, за да бъде генерирано седмичното класиране.
+        view_leaderboard: Виж класирането
+        rank: Ранг
+        player: Играч
+        points: Точки
+        prize_tokens: Наградни токени
+        winner_badge: Значка за победител
+        winner: Победител
+        winners: Победители
+        total_prize_tokens: Общо наградни токени
+        entries_count: '%count% участия'
+        entries_count_label: Участия
+        finalization_status: Финализация
+        pending: В изчакване
+        rankings_live_title: Финално класиране
+        anonymous_player: Анонимен играч
+        no: 'Не'
+        entry_tokens_inline: 'Вход %amount% ТОКЕНА'
+        join_inline: 'Включване %date%'
+        lock_inline: 'Заключване %date%'
+        join_game_week: Включи се в игровата седмица
+        hidden: Скрито
+        not_open: Не е отворено
+        login_to_join: Влез, за да се включиш
+        predictions_locked_for_game_week: Прогнозите за тази игрова седмица са заключени.
+        joined_game_week_submit_predictions: Вече си включен в тази игрова седмица. Изпрати прогнозите си по-долу.
+        joining_game_week_closed: Включването в тази игрова седмица е затворено.
+        game_week_not_visible: Тази игрова седмица не е видима.
+        game_week_not_open: Тази игрова седмица не е отворена.
+        join_before_submitting_predictions: Трябва първо да се включиш в тази игрова седмица, преди да изпратиш прогнози.
+        kickoff: Начало
+        your_prediction: Твоята прогноза
+        saved_status: Статус на записа
+        fixtures_meta: Прегледай програмата и заключи резултатите си преди затварянето на прогнозите.
+        saved_count: '%saved% / %total% запазени'
+        no_fixtures_added: Все още няма добавени срещи.
+        no_fixtures_added_text: Този кръг ще стане активен, след като към игровата седмица бъдат добавени срещи.
+        vs: срещу
+        tbd: TBD
+        saved: Запазено
+        not_saved: Не е запазено
+        save_predictions: Запази прогнозите
+        wallet: Портфейл
+        transactions: Транзакции
+        wallet_transactions_meta: Следи кредити, дебити и активност с токени.
+        wallet_balance: Баланс в портфейла
+        tokens: токени
+        betcircle_wallet: BetCircle Портфейл
+        no_wallet_transactions: Все още няма транзакции в портфейла.
+        no_wallet_transactions_text: Нова активност с токени ще се появи тук, след като започнеш да използваш платформата.
+        date: Дата
+        type: Тип
+        direction: Посока
+        amount: Сума
+        description: Описание
+        footer_title: Футболни прогнози с по-чисто и по-силно усещане за мачов ден.
+        footer_text: Премиум storefront посока за седмична футболна конкуренция, участие с токени и по-бърз процес за прогнози.
+        navigate: Навигация
+        home: Начало
+        homepage_meta_title: BetCircle | Футболни прогнози, изградени наново
+        homepage_eyebrow: Футболен контекст · игрови седмици · токени
+        homepage_hero_title_before: Прогнозирай
+        homepage_hero_title_highlight: големите мачове
+        homepage_hero_title_after: по по-чист и ясен начин.
+        homepage_hero_lead: BetCircle превръща всяка игрова седмица в премиум футболно предизвикателство с участие чрез токени, бърз поток за прогнози и по-силна атмосфера на мачов ден.
+        homepage_explore_game_weeks: Разгледай игровите седмици
+        homepage_open_my_account: Отвори моя акаунт
+        homepage_create_account: Създай акаунт
+        homepage_stat_1_value: Седмични
+        homepage_stat_1_label: Кръгове за прогнози, изградени около крайни срокове и видимост на фондовете.
+        homepage_stat_2_value: Токени
+        homepage_stat_2_label: Ясен модел за участие, изграден около твоя BetCircle портфейл.
+        homepage_stat_3_value: Чист UI
+        homepage_stat_3_label: По-малко шум, по-добра йерархия и по-бързи решения преди първия съдийски сигнал.
+        homepage_panel_pill: Контрол в мачов ден
+        homepage_panel_title: Изградено за ритъма на футбола
+        homepage_panel_text: Включи се в правилната седмица, следи прозореца за заключване и подай прогнозите си без да се губиш в претрупани екрани.
+        homepage_mini_1_kicker: Изживяване
+        homepage_mini_1_title: Модерен glass UI
+        homepage_mini_1_text: Фокусирани карти, по-силен контраст и адаптивни оформления.
+        homepage_mini_2_kicker: Поток
+        homepage_mini_2_title: Бързи действия
+        homepage_mini_2_text: Директен достъп до текущите игрови седмици и инструментите в акаунта.
+        homepage_mini_3_kicker: Футбол на първо място
+        homepage_mini_3_title: Контекст, който пасва на проекта
+        homepage_mini_3_text: Всичко, от цветовата система до анимациите, вдъхновени от терена, е настроено за продукт за футболни прогнози.
+        homepage_section_1_title: Начална страница, която напомня на мачов ден, а не на обикновен магазин.
+        homepage_section_1_subtitle: Новата посока държи storefront-а чист, като същевременно дава на футболния проект по-силна идентичност чрез движение, контраст и по-ясни точки за конверсия.
+        homepage_feature_1_title: По-ясна йерархия
+        homepage_feature_1_text: Основните действия се открояват, второстепенните детайли остават четими, а важните състояния на игровата седмица изпъкват веднага.
+        homepage_feature_2_title: Модерно движение
+        homepage_feature_2_text: Появяването при скрол и дискретното поведение на sticky header-а добавят завършеност, без да забавят изживяването.
+        homepage_feature_3_title: По-добър mobile UX
+        homepage_feature_3_text: Оформлението се свива чисто, държи CTA бутоните видими и избягва натрупани и тесни карти на по-малки екрани.
+        homepage_spotlight_pill: Как се играе
+        homepage_spotlight_title: От регистрация до запазени прогнози в три бързи стъпки.
+        homepage_spotlight_subtitle: Новата начална страница насочва потребителя директно към футболния поток, вместо първо да го кара да разкодира платформата.
+        homepage_spotlight_card_kicker: Защо тази тема работи
+        homepage_spotlight_card_title: Дизайн системата вече съвпада с модела на продукта.
+        homepage_spotlight_card_text: Токени, срещи, крайни срокове и седмична конкуренция вече са изведени с по-ясен визуален приоритет и по-уверен стил.
+        homepage_step_1_index: Стъпка 01
+        homepage_step_1_title: Създай или отвори своя акаунт
+        homepage_step_1_text: Влез бързо в платформата и дръж портфейла, участията и запазените прогнози свързани.
+        homepage_step_2_index: Стъпка 02
+        homepage_step_2_title: Включи се в активна игрова седмица
+        homepage_step_2_text: Прегледай фондовете, цената за участие и крайните срокове, преди да се ангажираш с този кръг.
+        homepage_step_3_index: Стъпка 03
+        homepage_step_3_title: Подай прогнози преди заключването
+        homepage_step_3_text: Използвай подобрената таблица със срещи и полетата за резултат, за да действаш по-бързо преди началото.
+        account: Акаунт
+        my_account: Моят акаунт
+        login: Вход
+        register: Регистрация
+        project_focus: Фокус на проекта
+        project_focus_text: Седмични игрови седмици, включване според крайни срокове и футболно ориентирано представяне вместо стандартен ecommerce homepage.
+        buy_more_here: Купи още оттук
+        profile: Профил
+        logout: Изход
+        primary_navigation: Основна навигация
+        betcircle_home: Начало на BetCircle
+        cart_button: Бутон за количка
+        toggle_navigation: Превключи навигацията
+        browse: Разгледай
+        breadcrumbs: Хлебни трохи
+        login_welcome_back: Добре дошъл отново
+        login_hero_title: Влез и се върни към своя футболен ритъм.
+        login_hero_text: Провери портфейла си, включи се в правилната игрова седмица и обнови прогнозите си преди заключването.
+        login_card_text: Достъпи профила си, портфейла и активните кръгове за прогнози.
+        forgot_password_question: Забравена парола?
+        register_pill: Присъедини се към BetCircle
+        register_hero_title: Създай своя акаунт за по-чисти прогнози в мачов ден.
+        register_hero_text: Настрой профила си, включвай се във футболни кръгове и управлявай токените и прогнозите си от едно място.
+        forgotten_password_pill: Възстановяване
+        forgotten_password_hero_title: Възстанови достъпа си, без да губиш ритъм.
+        forgotten_password_hero_text: Възстанови акаунта си и се върни към активните игрови седмици, портфейла и управлението на прогнозите.
+        reset_password_pill: Сигурност
+        reset_password_hero_title: Избери нова парола и продължи.
+        reset_password_hero_text: Обнови данните си за достъп и се върни към акаунта, участията и активността си в магазина.

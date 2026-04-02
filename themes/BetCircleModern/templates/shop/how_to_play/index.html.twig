@@ -1,0 +1,171 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'app.ui.how_to_play'|trans }} | BetCircle{% endblock %}
+
+{% block content %}
+    <div class="container bc-how-to-play">
+        <section class="bc-homepage__hero bc-how-to-play__hero" data-animate>
+            <div class="bc-homepage__pitch"></div>
+
+            <div class="row g-4 align-items-center position-relative">
+                <div class="col-lg-7">
+                    <span class="bc-homepage__eyebrow">{{ 'app.ui.how_to_play_eyebrow'|trans }}</span>
+                    <h1 class="bc-homepage__title">{{ 'app.ui.how_to_play_hero_title_before'|trans }} <span>{{ 'app.ui.how_to_play_hero_title_highlight'|trans }}</span> {{ 'app.ui.how_to_play_hero_title_after'|trans }}</h1>
+                    <p class="bc-homepage__lead">
+                        {{ 'app.ui.how_to_play_hero_lead'|trans }}
+                    </p>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="bc-surface-panel" data-animate>
+                        <div class="bc-mini-card">
+                            <div class="bc-mini-card__pill">{{ 'app.ui.how_to_play_short_version'|trans }}</div>
+                            <h2 class="bc-panel-heading">{{ 'app.ui.how_to_play_panel_title'|trans }}</h2>
+                            <p class="mb-0">
+                                {{ 'app.ui.how_to_play_panel_text'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bc-section">
+            <div data-animate>
+                <h2 class="bc-section-title">{{ 'app.ui.how_to_play_flow_title'|trans }}</h2>
+                <p class="bc-section-subtitle">{{ 'app.ui.how_to_play_flow_subtitle'|trans }}</p>
+            </div>
+
+            <div class="bc-feature-grid">
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">01</div>
+                    <h3>{{ 'app.ui.how_to_play_step_1_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_1_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">02</div>
+                    <h3>{{ 'app.ui.how_to_play_step_2_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_2_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">03</div>
+                    <h3>{{ 'app.ui.how_to_play_step_3_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_3_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">04</div>
+                    <h3>{{ 'app.ui.how_to_play_step_4_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_4_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">05</div>
+                    <h3>{{ 'app.ui.how_to_play_step_5_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_5_text'|trans }}</p>
+                </article>
+
+                <article class="bc-feature" data-animate>
+                    <div class="bc-feature__icon">06</div>
+                    <h3>{{ 'app.ui.how_to_play_step_6_title'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_step_6_text'|trans }}</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bc-section">
+            <div data-animate>
+                <h2 class="bc-section-title">{{ 'app.ui.how_to_play_prizes_title'|trans }}</h2>
+                <p class="bc-section-subtitle">{{ 'app.ui.how_to_play_prizes_subtitle'|trans }}</p>
+            </div>
+
+            <div class="bc-timeline-grid">
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.how_to_play_prize_index_1'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.how_to_play_prize_1_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_prize_1_text'|trans }}</p>
+                </article>
+
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.how_to_play_prize_index_2'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.how_to_play_prize_2_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_prize_2_text'|trans }}</p>
+                </article>
+
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.how_to_play_prize_index_3'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.how_to_play_prize_3_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_prize_3_text'|trans }}</p>
+                </article>
+
+                <article class="bc-timeline" data-animate>
+                    <div class="bc-timeline__index">{{ 'app.ui.how_to_play_prize_index_4'|trans }}</div>
+                    <strong class="d-block mt-2 mb-2">{{ 'app.ui.how_to_play_prize_4_title'|trans }}</strong>
+                    <p class="mb-0">{{ 'app.ui.how_to_play_prize_4_text'|trans }}</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bc-section">
+            <div class="bc-spotlight" data-animate>
+                <div>
+                    <span class="bc-pill">{{ 'app.ui.how_to_play_helpful_notes'|trans }}</span>
+                    <h2 class="bc-section-title mt-3">{{ 'app.ui.how_to_play_notes_title'|trans }}</h2>
+                    <p class="bc-section-subtitle mb-0">{{ 'app.ui.how_to_play_notes_subtitle'|trans }}</p>
+                </div>
+
+                <div class="bc-spotlight__card">
+                    <div class="bc-kicker">{{ 'app.ui.how_to_play_keep_in_mind'|trans }}</div>
+                    <h3 class="text-white mt-2">{{ 'app.ui.how_to_play_spotlight_title'|trans }}</h3>
+                    <p class="bc-spotlight__text mb-0">{{ 'app.ui.how_to_play_spotlight_text'|trans }}</p>
+                </div>
+            </div>
+
+            <div class="bc-summary-grid mt-4">
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_entry_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_entry_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_entry_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_predictions_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_predictions_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_predictions_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_account_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_account_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_account_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_game_flow_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_game_flow_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_game_flow_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_prizes_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_prizes_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_prizes_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_seasonal_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_seasonal_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_seasonal_text'|trans }}</p>
+                </div>
+
+                <div class="bc-summary-card" data-animate>
+                    <span class="bc-kicker">{{ 'app.ui.how_to_play_card_withdrawals_kicker'|trans }}</span>
+                    <strong>{{ 'app.ui.how_to_play_card_withdrawals_title'|trans }}</strong>
+                    <p class="mb-0 mt-2">{{ 'app.ui.how_to_play_card_withdrawals_text'|trans }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

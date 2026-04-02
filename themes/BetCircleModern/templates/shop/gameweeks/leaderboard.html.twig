@@ -1,0 +1,125 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ week.name }} | {{ 'app.ui.weekly_leaderboard'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% set winnerCount = 0 %}
+        {% set totalPrizeTokens = 0 %}
+
+        {% for row in leaderboard %}
+            {% if row.winner %}
+                {% set winnerCount = winnerCount + 1 %}
+            {% endif %}
+
+            {% set totalPrizeTokens = totalPrizeTokens + row.prizeTokens %}
+        {% endfor %}
+
+        <section class="bc-page-header" data-animate>
+            <div class="bc-page-header__card">
+                <a href="{{ path('app_shop_gameweeks_show', { id: week.id }) }}" class="bc-back-link">&larr; {{ 'app.ui.back_to_game_week'|trans }}</a>
+                <div class="d-flex flex-column flex-lg-row justify-content-between gap-4">
+                    <div>
+                        <span class="bc-pill">{{ 'app.ui.weekly_leaderboard'|trans }}</span>
+                        <h1 class="text-white mt-3 mb-3">{{ week.name }}</h1>
+                        <p class="bc-page-header__lead mb-0">{{ 'app.ui.weekly_leaderboard_lead'|trans }}</p>
+                        <div class="bc-page-header__meta">
+                            <span>{{ 'app.ui.status'|trans }}: {{ week.statusValue|replace({'_': ' '})|title }}</span>
+                            <span>{{ 'app.ui.finalization_status'|trans }}: {{ week.finalized ? 'app.ui.finalized'|trans : 'app.ui.pending'|trans }}</span>
+                            <span>{{ 'app.ui.entries_count'|trans({'%count%': leaderboard|length}) }}</span>
+                        </div>
+                    </div>
+
+                    <div class="align-self-start">
+                        <a href="{{ path('app_shop_gameweeks_show', { id: week.id }) }}" class="btn bc-btn-glass">
+                            {{ 'app.ui.view_game_week'|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if not week.finalized %}
+            <div class="alert alert-secondary mb-4">
+                {{ 'app.ui.weekly_leaderboard_not_finalized'|trans }}
+            </div>
+        {% endif %}
+
+        <div class="bc-summary-grid mb-4">
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.weekly_leaderboard'|trans }}</span>
+                <strong>{{ 'app.ui.rankings_live_title'|trans }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.winners'|trans }}</span>
+                <strong>{{ winnerCount }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.total_prize_tokens'|trans }}</span>
+                <strong>{{ totalPrizeTokens }}</strong>
+            </div>
+            <div class="bc-summary-card" data-animate>
+                <span class="small text-muted">{{ 'app.ui.entries_count_label'|trans }}</span>
+                <strong>{{ leaderboard|length }}</strong>
+            </div>
+        </div>
+
+        <section class="bc-fixture-shell bc-leaderboard-shell" data-animate>
+            <div class="bc-fixture-head">
+                <div>
+                    <h2 class="h4 mb-1">{{ 'app.ui.weekly_leaderboard'|trans }}</h2>
+                    <div class="bc-fixture-meta">{{ 'app.ui.weekly_leaderboard_table_meta'|trans }}</div>
+                </div>
+            </div>
+
+            {% if leaderboard is empty %}
+                <div class="bc-empty-state">
+                    <h3 class="h5 mb-2">{{ 'app.ui.no_leaderboard_available'|trans }}</h3>
+                    <p class="mb-0">{{ 'app.ui.no_leaderboard_available_text'|trans }}</p>
+                </div>
+            {% else %}
+                <div class="bc-ui-table">
+                    <div class="bc-ui-table__surface">
+                        <div class="table-responsive bc-table-wrap">
+                            <table class="table align-middle mb-0 bc-leaderboard-table">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'app.ui.rank'|trans }}</th>
+                                    <th>{{ 'app.ui.player'|trans }}</th>
+                                    <th>{{ 'app.ui.points'|trans }}</th>
+                                    <th>{{ 'app.ui.prize_tokens'|trans }}</th>
+                                    <th>{{ 'app.ui.winner_badge'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in leaderboard %}
+                                    {% set customer = row.customer %}
+                                    {% set fullName = customer and customer.fullName ? customer.fullName : null %}
+                                    {% set displayName = fullName ?: (customer and customer.email ? customer.email : 'app.ui.anonymous_player'|trans) %}
+                                    <tr>
+                                        <td>
+                                            <span class="bc-rank-badge{% if row.winner %} is-winner{% endif %}">#{{ row.rank }}</span>
+                                        </td>
+                                        <td><div class="fw-semibold">{{ displayName }}</div></td>
+                                        <td><strong>{{ row.points }}</strong></td>
+                                        <td>
+                                            <span class="bc-token-pill{% if row.prizeTokens > 0 %} has-value{% endif %}">{{ row.prizeTokens }}</span>
+                                        </td>
+                                        <td>
+                                            {% if row.winner %}
+                                                <span class="bc-winner-badge">{{ 'app.ui.winner'|trans }}</span>
+                                            {% else %}
+                                                <span class="text-muted">{{ 'app.ui.no'|trans }}</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

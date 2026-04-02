@@ -1,0 +1,65 @@
+{% set order = hookable_metadata.context.order %}
+{% set active_step = hookable_metadata.context.active_step|default('') %}
+{% set order_requires_shipping = sylius_is_shipping_required(order) %}
+{% set order_requires_payment = sylius_is_payment_required(order) %}
+
+{% set steps = [
+    {
+        'name': 'address',
+        'route': 'sylius_shop_checkout_address',
+        'label': 'sylius.ui.address'|trans,
+        'required': true,
+        'state': active_step == 'address' ? 'active' : 'completed',
+        'test_attribute': 'step-address',
+    },
+    {
+        'name': 'select_shipping',
+        'route': 'sylius_shop_checkout_select_shipping',
+        'label': 'sylius.ui.shipping'|trans,
+        'required': order_requires_shipping,
+        'state': active_step == 'select_shipping' ? 'active' : (active_step == 'address' ? 'disabled' : 'completed'),
+        'test_attribute': 'step-shipping',
+    },
+    {
+        'name': 'select_payment',
+        'route': 'sylius_shop_checkout_select_payment',
+        'label': 'sylius.ui.payment'|trans,
+        'required': order_requires_payment,
+        'state': active_step == 'select_payment' ? 'active' : (active_step == 'complete' ? 'completed' : 'disabled'),
+        'test_attribute': 'step-payment',
+    },
+    {
+        'name': 'complete',
+        'route': 'sylius_shop_checkout_complete',
+        'label': 'sylius.ui.complete'|trans,
+        'required': true,
+        'state': active_step == 'complete' ? 'active' : 'disabled',
+        'test_attribute': 'step-complete',
+    },
+] %}
+
+<div class="bc-checkout-steps-card">
+    <div class="bc-checkout-steps" data-active-step="{{ active_step }}">
+        {% for step in steps|filter(step => step.required) %}
+            <div class="bc-checkout-steps__item is-{{ step.state }}">
+                {% if step.state != 'disabled' %}
+                    <a href="{{ path(step.route) }}" class="bc-checkout-steps__link" {{ sylius_test_html_attribute(step.test_attribute) }}>
+                        <span class="bc-checkout-steps__marker" aria-hidden="true">
+                            {% if step.state == 'completed' %}
+                                {{ ux_icon('tabler:check', { class: 'icon icon-sm' }) }}
+                            {% else %}
+                                {{ loop.index }}
+                            {% endif %}
+                        </span>
+                        <span class="bc-checkout-steps__text">{{ step.label|trans }}</span>
+                    </a>
+                {% else %}
+                    <span class="bc-checkout-steps__label">
+                        <span class="bc-checkout-steps__marker" aria-hidden="true">{{ loop.index }}</span>
+                        <span class="bc-checkout-steps__text">{{ step.label|trans }}</span>
+                    </span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

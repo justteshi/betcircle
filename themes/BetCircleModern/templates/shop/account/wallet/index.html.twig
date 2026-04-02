@@ -1,0 +1,32 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'app.ui.wallet'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container bc-account-shell">
+        <div class="mb-4">
+            {% include '@SyliusShop/account/common/content/breadcrumbs.html.twig' %}
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 col-lg-3">
+                {% include '@SyliusShop/account/common/content/menu/account.html.twig' %}
+            </div>
+
+            <div class="col-12 col-lg-9">
+                {% include 'shop/account/wallet/_balance_card.html.twig' %}
+
+                <div class="bc-fixture-shell">
+                    <div class="bc-fixture-head">
+                        <div>
+                            <h2 class="h4 mb-1">{{ 'app.ui.transactions'|trans }}</h2>
+                            <div class="bc-fixture-meta">{{ 'app.ui.wallet_transactions_meta'|trans }}</div>
+                        </div>
+                    </div>
+
+                    {% include 'shop/account/wallet/_transactions_table.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
